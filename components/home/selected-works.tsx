@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Work } from "@/lib/works";
+import { asset } from "@/lib/asset";
 
 export function SelectedWorks({ works }: { works: Work[] }) {
   return (
@@ -33,18 +35,33 @@ export function SelectedWorks({ works }: { works: Work[] }) {
                 <span className="col-span-1 text-[11px] text-muted font-mono">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="col-span-7 md:col-span-6">
+                <div className="col-span-3 md:col-span-2">
+                  {w.cover ? (
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-surface">
+                      <Image
+                        src={asset(w.cover)}
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 25vw, 16vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-[4/3] rounded-md bg-surface" />
+                  )}
+                </div>
+                <div className="col-span-7 md:col-span-5">
                   <p className="text-[11px] text-muted font-mono mb-1">
                     {w.year} · {labelForCategory(w.category)}
                   </p>
-                  <h3 className="display text-xl md:text-3xl tracking-tight group-hover:text-accent transition-colors">
+                  <h3 className="display text-lg md:text-2xl tracking-tight group-hover:text-accent transition-colors">
                     {w.title}
                   </h3>
                   <p className="mt-2 text-[13px] text-muted-strong line-clamp-1">
                     {w.subtitle}
                   </p>
                 </div>
-                <div className="col-span-3 md:col-span-4 hidden sm:block">
+                <div className="col-span-12 md:col-span-3 hidden md:block">
                   <p className="text-[12px] text-muted-strong leading-relaxed">
                     {w.client}
                   </p>

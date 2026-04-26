@@ -1,3 +1,24 @@
+import Image from "next/image";
+import { asset } from "@/lib/asset";
+
+const GALLERY = [
+  {
+    src: "/images/hibiya-vibrant-city-jo.jpg",
+    alt: "日比谷 Vibrant City Jazz Orchestra at HIBIYA FOOD HALL",
+    caption: "日比谷 Vibrant City Jazz Orchestra",
+  },
+  {
+    src: "/images/music-day-cover.jpg",
+    alt: "MUSIC DAY at HIBIYA FOOD HALL — バンド＋ダンサー集合写真",
+    caption: "MUSIC DAY at HIBIYA FOOD HALL",
+  },
+  {
+    src: "/images/music-day-signage.jpg",
+    alt: "HIBIYA FOOD HALL の MUSIC DAY サイネージ",
+    caption: "会場サイネージ",
+  },
+];
+
 const YEARS = [
   { year: "2023", count: 17, note: "6月10日 開始" },
   { year: "2024", count: 24, note: "+ 41% YoY" },
@@ -69,6 +90,28 @@ export function RecurringOps() {
               <div className="h-full bg-accent" style={{ width: "100%" }} />
             </div>
           </div>
+        </div>
+
+        {/* Gallery strip */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-line-strong border border-line-strong">
+          {GALLERY.map((g) => (
+            <figure
+              key={g.src}
+              className="relative bg-background aspect-[4/3] overflow-hidden group"
+            >
+              <Image
+                src={asset(g.src)}
+                alt={g.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(26,24,19,0.85)_100%)]" />
+              <figcaption className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+                <p className="eyebrow text-accent-soft">{g.caption}</p>
+              </figcaption>
+            </figure>
+          ))}
         </div>
 
         <div className="mt-12 flex flex-wrap items-center gap-6 text-[12px] text-muted-strong">

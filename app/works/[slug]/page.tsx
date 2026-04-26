@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { works, getWorkBySlug } from "@/lib/works";
 import { ContactCta } from "@/components/contact-cta";
+import { asset } from "@/lib/asset";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -35,11 +37,21 @@ export default async function WorkDetail({ params }: Props) {
         data-theme="dark"
         className="relative overflow-hidden bg-background text-foreground border-b hairline"
       >
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(193,154,75,0.18),transparent_55%),linear-gradient(180deg,#1a1813,#221f18)]" />
+        <div className="absolute inset-0 z-0">
+          {work.cover && (
+            <Image
+              src={asset(work.cover)}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover opacity-30"
+            />
+          )}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(193,154,75,0.22),transparent_55%),linear-gradient(180deg,rgba(26,24,19,0.82),rgba(34,31,24,0.92))]" />
           <div className="grain absolute inset-0" data-theme="dark" />
         </div>
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 pt-32 md:pt-44 pb-20 md:pb-28">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 pt-32 md:pt-44 pb-20 md:pb-28">
           <Link
             href="/works"
             className="inline-flex items-center gap-2 text-[12px] text-muted-strong hover:text-foreground transition-colors mb-12"

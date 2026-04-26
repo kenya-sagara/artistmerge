@@ -6,6 +6,8 @@ export const metadata: Metadata = {
     "音楽イベント・施設プロデュース・プラットフォーム導入のご相談をお受けしています。",
 };
 
+const EMAIL = "contact@artistmerge.jp";
+
 const TOPICS = [
   {
     title: "施設・街区の音楽プロデュース",
@@ -36,11 +38,11 @@ export default function ContactPage() {
         data-theme="dark"
         className="relative overflow-hidden bg-background text-foreground border-b hairline"
       >
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(193,154,75,0.16),transparent_55%),linear-gradient(180deg,#1a1813,#221f18)]" />
           <div className="grain absolute inset-0" data-theme="dark" />
         </div>
-        <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 pt-32 md:pt-44 pb-20 md:pb-28">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 pt-32 md:pt-44 pb-20 md:pb-28">
           <div className="flex items-center gap-3">
             <span className="block h-[1px] w-10 bg-accent" />
             <p className="eyebrow">Inquiry</p>
@@ -48,21 +50,33 @@ export default function ContactPage() {
           <h1 className="display-jp mt-8 text-5xl md:text-7xl lg:text-8xl max-w-[14ch]">
             ご相談、お待ちしています。
           </h1>
-          <p className="mt-12 max-w-3xl text-lg md:text-xl leading-relaxed text-muted-strong">
+          <p className="mt-10 max-w-3xl text-lg md:text-xl leading-relaxed text-muted-strong">
             街・施設の音楽プロデュースから、プラットフォーム導入まで。
-            まずはお気軽にメールでご連絡ください。
+            メールにて受け付けています。
           </p>
 
-          <div className="mt-12 flex flex-wrap gap-3">
-            <a
-              href="mailto:contact@artistmerge.jp"
-              className="group inline-flex h-14 items-center gap-3 rounded-full bg-foreground px-8 text-[15px] font-medium text-background hover:bg-accent transition-colors"
-            >
-              contact@artistmerge.jp
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </a>
+          {/* Prominent email card */}
+          <div className="mt-14 max-w-2xl">
+            <div className="rounded-2xl border border-line-strong bg-[linear-gradient(180deg,rgba(193,154,75,0.08),transparent)] p-6 md:p-8">
+              <p className="eyebrow text-accent-soft">Send Email</p>
+              <p className="display mt-3 text-3xl md:text-4xl tracking-tight break-all">
+                {EMAIL}
+              </p>
+              <p className="mt-3 text-[12px] font-mono text-muted-strong">
+                ※2営業日以内にご返信いたします
+              </p>
+              <div className="mt-6">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="group inline-flex h-12 items-center gap-3 rounded-full bg-foreground px-6 text-[14px] font-medium text-background hover:bg-accent transition-colors"
+                >
+                  メールを書く
+                  <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

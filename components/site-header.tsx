@@ -59,24 +59,21 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <Link
-          href="/contact"
+        <a
+          href="mailto:contact@artistmerge.jp"
           className="hidden md:inline-flex h-9 items-center gap-2 rounded-full border border-line-strong px-4 text-[12px] font-medium hover:border-accent hover:text-accent transition-colors"
         >
-          指名のご相談
+          contact@artistmerge.jp
           <span aria-hidden>→</span>
-        </Link>
+        </a>
 
-        {/* Mobile: just Contact */}
-        <Link
-          href="/contact"
-          aria-current={pathname === "/contact" ? "page" : undefined}
-          className={`md:hidden text-[13px] transition-colors ${
-            pathname === "/contact" ? "text-accent" : "text-foreground"
-          }`}
+        {/* Mobile: direct mail link */}
+        <a
+          href="mailto:contact@artistmerge.jp"
+          className="md:hidden text-[13px] text-foreground hover:text-accent transition-colors"
         >
-          Contact
-        </Link>
+          Mail →
+        </a>
       </div>
     </header>
   );

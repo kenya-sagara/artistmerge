@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { asset } from "@/lib/asset";
 
 export function Hero() {
   return (
@@ -6,13 +8,21 @@ export function Hero() {
       data-theme="dark"
       className="relative overflow-hidden bg-background text-foreground border-b hairline"
     >
-      {/* Background — abstract gradient + grain */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(193,154,75,0.18),transparent_55%),radial-gradient(ellipse_at_70%_80%,rgba(216,184,122,0.10),transparent_50%),linear-gradient(180deg,#1a1813_0%,#221f18_60%,#1a1813_100%)]" />
+      {/* Background — photo + dark gradient overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={asset("/images/hibiya-2025-cover.jpg")}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-bottom opacity-55"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(193,154,75,0.20),transparent_55%),radial-gradient(ellipse_at_70%_80%,rgba(216,184,122,0.10),transparent_50%),linear-gradient(180deg,rgba(26,24,19,0.72)_0%,rgba(34,31,24,0.82)_60%,rgba(26,24,19,0.90)_100%)]" />
         <div className="grain absolute inset-0" data-theme="dark" />
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 pt-28 md:pt-44 pb-24 md:pb-32">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 pt-28 md:pt-44 pb-24 md:pb-32">
         {/* Eyebrow */}
         <div className="flex items-center gap-3">
           <span className="block h-[1px] w-10 bg-accent" />
@@ -46,12 +56,15 @@ export function Hero() {
               →
             </span>
           </Link>
-          <Link
-            href="/contact"
-            className="inline-flex h-12 items-center gap-3 rounded-full border border-line-strong px-6 text-[13px] font-medium hover:border-accent hover:text-accent transition-colors"
+          <a
+            href="mailto:contact@artistmerge.jp"
+            className="group inline-flex h-12 items-center gap-3 rounded-full border border-line-strong px-6 text-[13px] font-medium hover:border-accent hover:text-accent transition-colors"
           >
-            指名のご相談
-          </Link>
+            contact@artistmerge.jp
+            <span aria-hidden className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </a>
         </div>
 
         {/* Proof strip */}

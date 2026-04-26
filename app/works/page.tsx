@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { works } from "@/lib/works";
 import { ContactCta } from "@/components/contact-cta";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "Works — ArtistMerge",
@@ -53,7 +55,22 @@ export default function WorksIndex() {
                   <span className="col-span-1 text-[11px] text-muted font-mono">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="col-span-11 md:col-span-7">
+                  <div className="col-span-3 md:col-span-3">
+                    {w.cover ? (
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-surface">
+                        <Image
+                          src={asset(w.cover)}
+                          alt=""
+                          fill
+                          sizes="(max-width: 768px) 25vw, 25vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    ) : (
+                      <div className="aspect-[4/3] rounded-md bg-surface" />
+                    )}
+                  </div>
+                  <div className="col-span-8 md:col-span-5">
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <span className="text-[11px] text-muted font-mono">
                         {w.year}
@@ -75,14 +92,14 @@ export default function WorksIndex() {
                         {STATUS_LABEL[w.status]}
                       </span>
                     </div>
-                    <h2 className="display text-2xl md:text-4xl tracking-tight group-hover:text-accent transition-colors">
+                    <h2 className="display text-xl md:text-3xl tracking-tight group-hover:text-accent transition-colors">
                       {w.title}
                     </h2>
                     <p className="mt-3 text-[13px] md:text-[14px] text-muted-strong max-w-2xl">
                       {w.subtitle}
                     </p>
                   </div>
-                  <div className="col-span-12 md:col-span-3 hidden md:block">
+                  <div className="col-span-12 md:col-span-2 hidden md:block">
                     <p className="text-[12px] text-muted-strong leading-relaxed">
                       {w.client}
                     </p>

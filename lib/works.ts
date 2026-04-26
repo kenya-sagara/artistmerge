@@ -12,6 +12,7 @@ export type Work = {
   scale: { label: string; value: string }[];
   summary: string;
   highlights: string[];
+  cover?: string;
   externalUrl?: string;
 };
 
@@ -44,6 +45,7 @@ export const works: Work[] = [
       "街区横断の3会場連動運営",
       "ビッグバンド・デュオ・クインテット等の多様な編成",
     ],
+    cover: "/images/hibiya-2026-cover.jpg",
     externalUrl: "https://hibiya-festival.artistmerge.jp/",
   },
   {
@@ -70,6 +72,7 @@ export const works: Work[] = [
       "翌年の規模拡大（3倍）と再発注の起点に",
       "施設運営者・主催からの継続パートナー関係を確立",
     ],
+    cover: "/images/hibiya-2025-cover.jpg",
     externalUrl: "https://music-day.main.jp/event/music-weekend/",
   },
   {
@@ -97,6 +100,7 @@ export const works: Work[] = [
       "専属フラッグシップバンド『日比谷 Vibrant City Jazz Orchestra』が毎月レジデンシー出演",
       "LIVEXA-OS の前身となる、リアルなプラットフォーム運営",
     ],
+    cover: "/images/music-day-signage.jpg",
     externalUrl: "https://music-day.main.jp/",
   },
 ];
