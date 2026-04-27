@@ -64,10 +64,10 @@ export function SiteFooter() {
             <div className="mt-8">
               <p className="eyebrow mb-2">Inquiry</p>
               <a
-                href="mailto:contact@artistmerge.jp"
+                href="mailto:info@artistmerge.jp"
                 className="display text-2xl tracking-tight hover:text-accent transition-colors"
               >
-                contact@artistmerge.jp
+                info@artistmerge.jp
               </a>
             </div>
           </div>

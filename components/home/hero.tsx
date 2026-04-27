@@ -57,10 +57,10 @@ export function Hero() {
             </span>
           </Link>
           <a
-            href="mailto:contact@artistmerge.jp"
+            href="mailto:info@artistmerge.jp"
             className="group inline-flex h-12 items-center gap-3 rounded-full border border-line-strong px-6 text-[13px] font-medium hover:border-accent hover:text-accent transition-colors"
           >
-            contact@artistmerge.jp
+            info@artistmerge.jp
             <span aria-hidden className="transition-transform group-hover:translate-x-1">
               →
             </span>

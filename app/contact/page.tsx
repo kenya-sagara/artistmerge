@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "音楽イベント・施設プロデュース・プラットフォーム導入のご相談をお受けしています。",
 };
 
-const EMAIL = "contact@artistmerge.jp";
+const EMAIL = "info@artistmerge.jp";
 
 const TOPICS = [
   {

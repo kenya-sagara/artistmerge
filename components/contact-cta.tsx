@@ -20,10 +20,10 @@ export function ContactCta() {
             </p>
             <div className="mt-12 flex flex-wrap gap-3">
               <a
-                href="mailto:contact@artistmerge.jp"
+                href="mailto:info@artistmerge.jp"
                 className="group inline-flex h-12 items-center gap-3 rounded-full bg-foreground px-6 text-[14px] font-medium text-background hover:bg-accent transition-colors"
               >
-                contact@artistmerge.jp
+                info@artistmerge.jp
                 <span aria-hidden className="transition-transform group-hover:translate-x-1">
                   →
                 </span>

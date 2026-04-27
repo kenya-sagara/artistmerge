@@ -60,16 +60,16 @@ export function SiteHeader() {
         </nav>
 
         <a
-          href="mailto:contact@artistmerge.jp"
+          href="mailto:info@artistmerge.jp"
           className="hidden md:inline-flex h-9 items-center gap-2 rounded-full border border-line-strong px-4 text-[12px] font-medium hover:border-accent hover:text-accent transition-colors"
         >
-          contact@artistmerge.jp
+          info@artistmerge.jp
           <span aria-hidden>→</span>
         </a>
 
         {/* Mobile: direct mail link */}
         <a
-          href="mailto:contact@artistmerge.jp"
+          href="mailto:info@artistmerge.jp"
           className="md:hidden text-[13px] text-foreground hover:text-accent transition-colors"
         >
           Mail →
