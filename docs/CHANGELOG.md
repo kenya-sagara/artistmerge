@@ -12,6 +12,10 @@ ArtistMerge コーポレートサイトの変更履歴を記録する。
   - 起業家としての軌跡と音楽家としての一面の対比構造を明確化。
   - 影響範囲: `app/about/page.tsx` のみ。デザイン・レイアウト変更なし。
 
+- **About ページ（`/about/`）**: 五十嵐 誠氏プロフィール 5 段落目を再編。
+  - 「アンサンブル・メーカー」思想設計への参画記述を、ArtistMerge での役割（音楽制作・編曲統括／GrooveCast／日比谷 VCJO ミュージックディレクター）の直後に移動。ArtistMerge 起点の取り組みであることを明確化。
+  - 影響範囲: `app/about/page.tsx` のみ。
+
 - **About ページ（`/about/`）**: 五十嵐 誠氏プロフィールを大幅加筆。
   - 肩書きを `Trombonist / Composer-Arranger / Conductor / Big Band Director / Whistler` に拡張。
   - 経歴に DREAMS COME TRUE・Superfly のサポート歴、NHK紅白歌合戦・ミュージックステーション出演、大手男性アイドルグループのドームツアーでのオーケストラコンダクター経験を追記。
