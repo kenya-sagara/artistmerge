@@ -43,6 +43,9 @@ export const metadata: Metadata = {
     description:
       "エンタメ・プラットフォームを、現場から立ち上げる。日比谷の音楽プログラムを2年連続でプロデュース。",
   },
+  verification: {
+    google: "AnXUBLu54G9Sfq1VOC_BlRJ9IA33s-vX4CHLsqdqRK4",
+  },
 };
 
 // Organization + WebSite structured data for Google Knowledge Panel and sitelinks
