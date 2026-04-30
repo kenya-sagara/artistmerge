@@ -4,6 +4,14 @@ ArtistMerge コーポレートサイトの変更履歴を記録する。
 
 ## 2026-04-30
 
+### コンテンツ修正（数値の正確化）
+
+- **HIBIYA LIVE FESTIVAL 2026**: 出演組数を実数に合わせて修正。
+  - `lib/works.ts`: 「30組以上」→「26組」、summary・highlights の関連表現を実態に合わせて調整。
+  - サイト全体の関連表記（`components/home/three-pillars.tsx` / `components/home/track-record.tsx` / `components/home/why-artistmerge.tsx` / `app/why/page.tsx` / `lib/works.ts`）で「3倍」→「2倍以上」、「30組以上」→「26組」に統一。
+  - 誇張表現を避け、誠実な数値表記に統一する方針。
+  - 影響範囲: トップページ・Why ページ・Works 一覧・Works 詳細（2025／2026）。
+
 ### SEO 対策
 
 - **sitemap.xml 自動生成**: `app/sitemap.ts` 新規追加。トップ7ページ＋Works 詳細3ページの合計10 URL を出力。`changeFrequency` / `priority` を機能特性に応じて設定。

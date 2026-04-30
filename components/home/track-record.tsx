@@ -14,11 +14,11 @@ export function TrackRecord() {
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
           <p className="text-[15px] md:text-base leading-relaxed text-muted-strong max-w-prose">
             日比谷で開催される音楽フェスティバルを、私たちは2025年に続いて2026年もプロデュースします。
-            出演アーティストは10組から30組以上に。会場は1拠点から街区連動の3拠点へ。
+            出演アーティストは10組から26組に。会場は1拠点から街区連動の3拠点へ。
             <br />
             <br />
             これは単発の業務委託ではなく、街と施設の音楽プログラムを共に育てるパートナーシップの証です。
-            <span className="text-foreground">同じパートナーから2年連続で指名され、規模を3倍に拡大できる事業者は、業界でも限られます。</span>
+            <span className="text-foreground">同じパートナーから2年連続で指名され、規模を2倍以上に拡大できる事業者は、業界でも限られます。</span>
           </p>
 
           <div className="grid grid-cols-2 gap-6">
