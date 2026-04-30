@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Vision — ArtistMerge",
   description:
     "現場とプラットフォーム、両方を持つことで、ライブエンタメの収益構造を再設計する。",
+  alternates: {
+    canonical: "/vision/",
+  },
 };
 
 const STAGES = [

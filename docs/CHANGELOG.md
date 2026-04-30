@@ -4,6 +4,17 @@ ArtistMerge コーポレートサイトの変更履歴を記録する。
 
 ## 2026-04-30
 
+### SEO 対策
+
+- **sitemap.xml 自動生成**: `app/sitemap.ts` 新規追加。トップ7ページ＋Works 詳細3ページの合計10 URL を出力。`changeFrequency` / `priority` を機能特性に応じて設定。
+- **robots.txt 自動生成**: `app/robots.ts` 新規追加。全クローラ許可 + sitemap への誘導。
+- **構造化データ (JSON-LD)**: `app/layout.tsx` に Organization + WebSite の schema.org 構造化データを `<script type="application/ld+json">` で埋め込み。Google ナレッジパネル・サイトリンク表示に対応。
+- **canonical URL**: 全静的ページ（`/`、`/about/`、`/contact/`、`/platform/`、`/vision/`、`/why/`、`/works/`）と Works 詳細動的ルートに `alternates.canonical` を個別設定。重複コンテンツ対策。
+- **Twitter カード**: `app/layout.tsx` に `summary_large_image` カード設定を追加。
+- **OpenGraph 拡張**: `siteName`、`url` を追記。
+- **静的エクスポート対応**: `output: "export"` 環境では route handler に `export const dynamic = "force-static"` が必要なため、sitemap / robots ともに付与。
+- 影響範囲: `app/sitemap.ts`（新規）、`app/robots.ts`（新規）、`app/layout.tsx`、各ページの `metadata`。
+
 ### コンテンツ更新
 
 - **Platform ページ（`/platform/`）**: アンサンブル・メーカーの説明文から「ロール分け」表現を削除。

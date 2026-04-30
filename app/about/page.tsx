@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "About / The Producer — ArtistMerge",
   description:
     "株式会社アーティストマージの会社情報・チーム・ミッション。",
+  alternates: {
+    canonical: "/about/",
+  },
 };
 
 type TeamMember = {

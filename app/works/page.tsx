@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Works — ArtistMerge",
   description:
     "ArtistMerge がプロデュースした音楽イベント・定期ライブの実績一覧。",
+  alternates: {
+    canonical: "/works/",
+  },
 };
 
 const STATUS_LABEL: Record<(typeof works)[number]["status"], string> = {

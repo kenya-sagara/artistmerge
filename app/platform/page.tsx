@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Platform — ArtistMerge",
   description:
     "LIVEXA-OS / GrooveCast / Ensemble Maker — ライブエンタメの共通基盤を、現場から立ち上げています。",
+  alternates: {
+    canonical: "/platform/",
+  },
 };
 
 export default function PlatformPage() {

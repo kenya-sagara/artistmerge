@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${work.title} — ArtistMerge`,
     description: work.summary,
+    alternates: {
+      canonical: `/works/${work.slug}/`,
+    },
   };
 }
 

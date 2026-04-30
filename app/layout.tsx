@@ -32,10 +32,46 @@ export const metadata: Metadata = {
     title: "ArtistMerge",
     description:
       "エンタメ・プラットフォームを、現場から立ち上げる。日比谷の音楽プログラムを2年連続でプロデュース。",
+    url: "https://artistmerge.jp/",
+    siteName: "ArtistMerge",
     type: "website",
     locale: "ja_JP",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "ArtistMerge",
+    description:
+      "エンタメ・プラットフォームを、現場から立ち上げる。日比谷の音楽プログラムを2年連続でプロデュース。",
+  },
 };
+
+// Organization + WebSite structured data for Google Knowledge Panel and sitelinks
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "株式会社アーティストマージ",
+    alternateName: "ArtistMerge",
+    url: "https://artistmerge.jp",
+    logo: "https://artistmerge.jp/favicon.ico",
+    description:
+      "ライブエンタメの共通基盤を、現場から立ち上げる音楽プロデュース会社。日比谷の音楽プログラムを2年連続でプロデュース。",
+    foundingDate: "2024",
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "info@artistmerge.jp",
+      contactType: "customer support",
+      availableLanguage: ["Japanese"],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "ArtistMerge",
+    url: "https://artistmerge.jp",
+    inLanguage: "ja-JP",
+  },
+];
 
 export default function RootLayout({
   children,
@@ -48,6 +84,12 @@ export default function RootLayout({
       className={`${inter.variable} ${notoJp.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Why ArtistMerge — 他社にない、4つの揃い方。",
   description:
     "楽曲・バンド・運営・テクノロジー。ライブエンタメに必要な4領域すべてを内製している、ただひとつの音楽プロデュース会社。",
+  alternates: {
+    canonical: "/why/",
+  },
 };
 
 const QUADRANTS = [
