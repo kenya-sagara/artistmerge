@@ -56,7 +56,8 @@ const COMPANY = [
   { label: "会社名", value: "株式会社アーティストマージ（ArtistMerge Inc.）" },
   { label: "設立", value: "2023年5月29日" },
   { label: "資本金", value: "900万円" },
-  { label: "本社", value: "東京都江東区永代 ベルウッド永代ビル5階" },
+  { label: "本社", value: "〒135-0034 東京都江東区永代2-31-15 ベルウッド永代ビル 5階" },
+  { label: "連絡先", value: "TEL：03-4563-9901 / Mail：info@artistmerge.jp" },
   {
     label: "事業内容",
     value:

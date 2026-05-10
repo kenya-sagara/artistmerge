@@ -109,9 +109,7 @@ export function SiteFooter() {
           <p className="text-[11px] text-muted">
             © {new Date().getFullYear()} ArtistMerge Inc. All rights reserved.
           </p>
-          <p className="text-[11px] text-muted">
-            株式会社アーティストマージ — 東京都江東区永代
-          </p>
+          <p className="text-[11px] text-muted">株式会社アーティストマージ</p>
         </div>
       </div>
     </footer>

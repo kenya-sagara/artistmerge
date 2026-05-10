@@ -122,7 +122,10 @@ export default function ContactPage() {
             株式会社アーティストマージ
           </p>
           <p className="mt-4 text-[14px] text-muted-strong">
-            東京都江東区永代 ベルウッド永代ビル5階
+            〒135-0034 東京都江東区永代2-31-15 ベルウッド永代ビル 5階
+          </p>
+          <p className="mt-2 text-[14px] text-muted-strong">
+            TEL：03-4563-9901 / Mail：info@artistmerge.jp
           </p>
         </div>
       </section>
