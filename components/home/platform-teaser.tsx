@@ -2,18 +2,18 @@ import Link from "next/link";
 
 const PLATFORM = [
   {
-    name: "LIVEXA-OS",
-    status: "Coming Summer 2026",
+    name: "MUSIC DAY",
+    status: "Operating",
     description:
-      "ライブエンタメの統合 OS。チケット販売・ライブ配信・投げ銭・収益化を一気通貫で。アーティストと施設のための共通基盤。",
-    href: "/platform#livexa",
-    accent: true,
+      "HIBIYA FOOD HALL の定期ジャズライブ「MUSIC DAY」を支える公式サイト兼運営プラットフォーム。出演応募・ブッキング・出演料の請求管理・自動通知まで、継続開催の運営業務を一気通貫でデジタル化。",
+    href: "https://music-day.main.jp/",
+    external: true,
   },
   {
     name: "GrooveCast",
     status: "Operating",
     description:
-      "吹奏楽・ビッグバンド向けポップス楽譜のデジタル販売。プロの作編曲家による制作と、団体名印字までのカスタマイズ。",
+      "吹奏楽・ビッグバンド向けポップス楽譜のデジタル販売。プロの作編曲家による制作。",
     href: "https://www.groovecast.tokyo/",
     external: true,
   },
@@ -21,7 +21,7 @@ const PLATFORM = [
     name: "Ensemble Maker",
     status: "Designed & Built In-House",
     description:
-      "曲と楽器編成を選ぶだけで、最適なパート割り振りを自動生成する楽譜変換ツール。音楽理論の設計から物理的な実装まで、ArtistMerge が一貫して内製。提供は株式会社サグブレイン。",
+      "曲と楽器編成を選ぶだけで、最適なパート割り振りを自動生成する楽譜変換ツール。音楽理論の設計から物理的な実装まで、ArtistMerge が一貫して内製。開発協力は株式会社サグブレイン。",
     href: "https://sagbrain.com/service/music-ensemble-maker/",
     external: true,
   },
@@ -43,11 +43,7 @@ export function PlatformTeaser() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-line">
           {PLATFORM.map((p) => {
             const Inner = (
-              <div
-                className={`relative h-full p-8 md:p-10 bg-background hover:bg-surface transition-colors ${
-                  p.accent ? "ring-1 ring-inset ring-accent/30" : ""
-                }`}
-              >
+              <div className="relative h-full p-8 md:p-10 bg-background hover:bg-surface transition-colors">
                 <div className="flex items-center justify-between">
                   <p className="eyebrow">{p.status}</p>
                   {p.external && (
@@ -56,13 +52,7 @@ export function PlatformTeaser() {
                     </span>
                   )}
                 </div>
-                <h3
-                  className={`display mt-6 text-2xl md:text-3xl ${
-                    p.accent ? "text-accent-soft" : ""
-                  }`}
-                >
-                  {p.name}
-                </h3>
+                <h3 className="display mt-6 text-2xl md:text-3xl">{p.name}</h3>
                 <p className="mt-4 text-[14px] leading-relaxed text-muted-strong">
                   {p.description}
                 </p>

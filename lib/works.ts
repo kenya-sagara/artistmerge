@@ -98,7 +98,7 @@ export const works: Work[] = [
       "3年継続・累計76回以上の運営実績（隔週〜毎週、年ごとに開催数が拡大）",
       "出演バンドの公開募集・キュレーション・育成プロセスを内製",
       "専属フラッグシップバンド『日比谷 Vibrant City Jazz Orchestra』が毎月レジデンシー出演",
-      "LIVEXA-OS の前身となる、リアルなプラットフォーム運営",
+      "出演応募・ブッキング・出演料管理までデジタル化した、内製の運営プラットフォームで支える",
     ],
     cover: "/images/music-day-signage.jpg",
     externalUrl: "https://music-day.main.jp/",

@@ -29,8 +29,9 @@ export function ProducerNote() {
               <p>
                 日比谷で2年連続のフェスティバルをプロデュースし、
                 隔週〜毎週の定期ライブを3年間運営する。
-                その延長線上に、<span className="text-foreground">LIVEXA-OS</span>
-                を立ち上げます。
+                その延長線上に、
+                <span className="text-foreground">ライブエンタメの共通基盤</span>
+                を構想しています。
               </p>
               <p>
                 単発のイベント屋ではない。

@@ -10,7 +10,7 @@ const FOOTER_NAV = {
     { href: "/contact", label: "Contact" },
   ],
   Platform: [
-    { href: "/platform#livexa", label: "LIVEXA-OS" },
+    { href: "/platform#musicday", label: "MUSIC DAY Platform" },
     { href: "https://www.groovecast.tokyo/", label: "GrooveCast", external: true },
     {
       href: "https://sagbrain.com/service/music-ensemble-maker/",

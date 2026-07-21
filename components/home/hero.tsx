@@ -73,7 +73,7 @@ export function Hero() {
             <span className="block h-[1px] w-6 bg-accent" />
             <p className="eyebrow">Proof — Hibiya, Tokyo</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
             <Stat
               eyebrow="Annual Festival"
               value="2 × HIBIYA"
@@ -88,11 +88,6 @@ export function Hero() {
               eyebrow="Recurring Operation"
               value="76+ Sessions"
               caption="隔週〜毎週、3年継続"
-            />
-            <Stat
-              eyebrow="Coming this Summer"
-              value="LIVEXA-OS"
-              caption="ライブエンタメ統合 OS"
             />
           </div>
         </div>

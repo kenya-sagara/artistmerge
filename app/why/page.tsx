@@ -33,7 +33,7 @@ const QUADRANTS = [
     label: "Technology",
     title: "プロダクト・エンジニアリング",
     detail: "音楽 IT プロダクトを、理論設計から物理的な実装まで自社内製。「監修だけ」ではなく、コードを書くチームです。",
-    proof: "LIVEXA-OS / Ensemble Maker",
+    proof: "MUSIC DAY 運営プラットフォーム / Ensemble Maker",
   },
 ];
 
@@ -46,7 +46,7 @@ const COMPETITORS = [
   {
     type: "音楽事務所・キャスティング",
     missing: "現場運営・テクノロジー",
-    am: "現場 76+ 回 ＋ LIVEXA-OS",
+    am: "現場 76+ 回 ＋ 自社開発の音楽 IT プロダクト",
   },
   {
     type: "楽譜出版社",
@@ -98,9 +98,9 @@ const REASONS = [
     fromEn: "EVENT",
     toEn: "PROGRAM",
     fromJp: "当日で終わってしまう",
-    toJp: "データ・配信・収益化まで",
+    toJp: "運営基盤まで内製、仕組みで続く",
     body:
-      "夏に β リリースの LIVEXA-OS で、チケット販売・ライブ配信・投げ銭・観客データを一気通貫で。当日の感動を、翌日の集客と継続的な売上につなげます。",
+      "隔週〜毎週の定期ライブを支える運営プラットフォームを内製。出演バンドの募集・ブッキングから出演料の請求・入金管理、リマインダー通知までをデジタル化し、単発で終わらないプログラム運営を仕組みで支えています。",
   },
   {
     no: "05",
@@ -132,7 +132,7 @@ const ASSETS = [
   {
     name: "プラットフォーム IP",
     detail: "音楽 IT プロダクトを、理論設計から実装まで内製",
-    proof: "LIVEXA-OS（2026 夏 β）／Ensemble Maker",
+    proof: "MUSIC DAY 運営プラットフォーム／Ensemble Maker",
   },
   {
     name: "アーティスト育成プロセス",

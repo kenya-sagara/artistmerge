@@ -4,7 +4,7 @@ import { ContactCta } from "@/components/contact-cta";
 export const metadata: Metadata = {
   title: "Platform — ArtistMerge",
   description:
-    "LIVEXA-OS / GrooveCast / Ensemble Maker — ライブエンタメの共通基盤を、現場から立ち上げています。",
+    "MUSIC DAY / GrooveCast / Ensemble Maker — ライブエンタメの共通基盤を、現場から立ち上げています。",
   alternates: {
     canonical: "/platform/",
   },
@@ -39,9 +39,9 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* LIVEXA-OS */}
+      {/* MUSIC DAY Platform */}
       <section
-        id="livexa"
+        id="musicday"
         data-theme="dark"
         className="relative overflow-hidden bg-background text-foreground border-b hairline"
       >
@@ -52,28 +52,29 @@ export default function PlatformPage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-24 md:py-40">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
-              <p className="eyebrow text-accent-soft">Coming Summer 2026</p>
+              <p className="eyebrow text-accent-soft">Operating</p>
               <h2 className="display mt-6 text-5xl md:text-7xl text-accent-soft">
-                LIVEXA-OS
+                MUSIC DAY
               </h2>
               <p className="mt-6 text-[14px] text-muted-strong">
-                ライブエンタメ統合 OS
+                定期ライブ運営プラットフォーム
               </p>
             </div>
             <div className="md:col-span-7 space-y-8">
               <p className="text-[15px] md:text-base leading-relaxed text-muted-strong max-w-prose">
-                チケット販売・ライブ配信・投げ銭・収益化を、
-                ひとつのプラットフォームに統合します。
-                アーティストの稼ぎ方、施設の集客、観客の体験——
-                それぞれを最適化するための共通 OS。
+                HIBIYA FOOD HALL で3年続く定期ジャズライブ「MUSIC DAY」を、
+                公式サイトと運営システムの両面から支えるプラットフォーム。
+                出演バンドの公開募集からブッキング、出演料の請求・入金管理、
+                リマインダー通知まで、継続開催の運営業務を一気通貫でデジタル化し、
+                現場と一体で開発・改善を続けています。
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-line">
                 {[
-                  { title: "Ticketing", desc: "チケット販売・受付・QR入場" },
-                  { title: "Live Streaming", desc: "AWS IVS による低遅延配信" },
-                  { title: "Tips & Donations", desc: "Stripe Connect による投げ銭・収益分配" },
-                  { title: "Artist Suite", desc: "アーティスト管理・データ分析" },
+                  { title: "Band Applications", desc: "出演応募の受付・選考ステータス管理" },
+                  { title: "Booking", desc: "空き状況カレンダーと本予約・仮予約の管理" },
+                  { title: "Billing", desc: "出演料の請求・入金管理と決済リンク" },
+                  { title: "Operations Suite", desc: "運営ダッシュボード・メール自動通知" },
                 ].map((f) => (
                   <div key={f.title} className="bg-background p-6">
                     <p className="display text-lg">{f.title}</p>
@@ -84,14 +85,14 @@ export default function PlatformPage() {
                 ))}
               </div>
 
-              <div className="pt-4">
-                <p className="eyebrow mb-3">Tech Stack</p>
-                <p className="text-[12px] text-muted-strong font-mono leading-relaxed">
-                  Next.js 16 · TypeScript · PostgreSQL (Aurora) · Redis ·
-                  Stripe / Stripe Connect · AWS IVS · WebSocket (API Gateway +
-                  Lambda) · ECS Fargate · Terraform
-                </p>
-              </div>
+              <a
+                href="https://music-day.main.jp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center gap-3 rounded-full border border-line-strong px-6 text-[13px] font-medium hover:border-accent hover:text-accent transition-colors"
+              >
+                music-day.main.jp を見る <span aria-hidden>↗</span>
+              </a>
             </div>
           </div>
         </div>
@@ -111,7 +112,7 @@ export default function PlatformPage() {
             <div className="md:col-span-7 space-y-6">
               <p className="text-[15px] md:text-base leading-relaxed text-muted-strong max-w-prose">
                 プロの作編曲家による吹奏楽ポップス・ビッグバンド楽譜のデジタル販売。
-                団体名印字までのカスタマイズと、YouTube による解説・デモ音源で、
+                YouTube による解説・デモ音源で、
                 アマチュア演奏団体の "演奏したい曲" を支えるコンテンツレイヤーです。
               </p>
               <a

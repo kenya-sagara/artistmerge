@@ -21,7 +21,7 @@ const STAGES = [
     no: "02",
     title: "知見をプロダクト化する",
     body:
-      "現場で得た課題を、楽譜（GrooveCast）・編成変換（Ensemble Maker）・統合 OS（LIVEXA-OS）に落とし込む。",
+      "現場で得た課題を、楽譜（GrooveCast）・編成変換（Ensemble Maker）・運営基盤（MUSIC DAY プラットフォーム）に落とし込む。",
   },
   {
     no: "03",
@@ -140,12 +140,8 @@ export default function VisionPage() {
                   what: "HIBIYA LIVE FESTIVAL 2026 を3会場・30+組へ拡大。再発注。",
                 },
                 {
-                  when: "2026 Summer",
-                  what: "LIVEXA-OS β リリース。ライブエンタメ統合 OS の運用開始。",
-                },
-                {
                   when: "2026〜",
-                  what: "他エリア・他施設への横展開。OS 上の参加事業者を拡大。",
+                  what: "他エリア・他施設への横展開。共通基盤づくりを継続。",
                 },
               ].map((row) => (
                 <div

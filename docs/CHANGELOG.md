@@ -2,6 +2,39 @@
 
 ArtistMerge コーポレートサイトの変更履歴を記録する。
 
+## 2026-07-21
+
+### LIVEXA-OS 記載の全面削除（販売延期のため）
+
+- サイト全体から LIVEXA-OS の記載を削除。「Coming Summer 2026」「夏に β リリース」等の告知表現も併せて撤去。
+  - `components/home/platform-teaser.tsx`: LIVEXA-OS カードを削除。
+  - `components/home/hero.tsx`: Proof strip の LIVEXA-OS 統計を削除し、グリッドを 4 列 → 3 列に調整。
+  - `components/home/producer-note.tsx`: 「その延長線上に LIVEXA-OS を立ち上げます」→「ライブエンタメの共通基盤を構想しています」。
+  - `components/home/three-pillars.tsx`: Technology の実績から LIVEXA-OS を削除。
+  - `components/home/why-artistmerge.tsx` / `app/why/page.tsx`: Reason 04 を LIVEXA-OS 前提の文面から書き換え。4象限・競合比較・資産マップの proof からも削除。
+  - `app/platform/page.tsx`: LIVEXA-OS セクション（`#livexa`）を削除。metadata description からも削除。
+  - `app/vision/page.tsx`: ロードマップの「2026 Summer: LIVEXA-OS β リリース」行を削除。「OS 上の参加事業者を拡大」等の関連表現を調整。
+  - `app/about/page.tsx`: 相楽氏 bio・事業内容から LIVEXA-OS を削除。
+  - `app/contact/page.tsx`: 「LIVEXA-OS（β）の導入相談」トピックを削除。
+  - `components/site-footer.tsx`: Platform ナビの LIVEXA-OS リンクを削除。
+  - `lib/works.ts`: MUSIC DAY のハイライト「LIVEXA-OS の前身となる〜」を運営プラットフォーム紹介に書き換え。
+
+### MUSIC DAY 運営プラットフォームの記載を追加
+
+- 実運営中の MUSIC DAY プラットフォーム（music-day.main.jp / 公式サイト兼運営システム）の紹介を追加。実装済み機能（出演応募・ブッキング・出演料の請求/入金管理・自動通知・運営ダッシュボード）のみ記載し、未実装のチケット販売・配信・投げ銭には言及しない。
+  - `app/platform/page.tsx`: 「Operating」セクション（`#musicday`）を新設（機能グリッド4項目＋外部リンク）。
+  - `components/home/platform-teaser.tsx`: MUSIC DAY カードを先頭に追加（3 カード構成に復帰）。
+  - `components/home/three-pillars.tsx` / `app/why/page.tsx` / `app/vision/page.tsx`: Technology 系の proof・ロードマップ表現に運営プラットフォームを追記。
+  - `components/site-footer.tsx`: Platform ナビに「MUSIC DAY Platform」（`/platform#musicday`）を追加。
+
+### コンテンツ修正
+
+- **ホーム Platform カード**: Ensemble Maker の「提供は株式会社サグブレイン」→「開発協力は株式会社サグブレイン」に変更。GrooveCast の説明から「団体名印字までのカスタマイズ」を削除。
+  - 影響範囲: `components/home/platform-teaser.tsx`。
+- **Platform ページ（`/platform/`）**: GrooveCast セクションからも「団体名印字までのカスタマイズ」を削除し、ホームと表現を統一。
+  - 影響範囲: `app/platform/page.tsx`。
+- 影響範囲全体: トップ・Platform・Why・Vision・About・Contact・Works 詳細・フッター。
+
 ## 2026-04-30
 
 ### コンテンツ修正（数値の正確化）
