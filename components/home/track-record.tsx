@@ -13,7 +13,7 @@ export function TrackRecord() {
 
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
           <p className="text-[15px] md:text-base leading-relaxed text-muted-strong max-w-prose">
-            日比谷で開催される音楽フェスティバルを、私たちは2025年に続いて2026年もプロデュースします。
+            日比谷で開催される音楽フェスティバルを、私たちは2025年に続いて2026年もプロデュースしました。
             出演アーティストは10組から26組に。会場は1拠点から街区連動の3拠点へ。
             <br />
             <br />
@@ -28,7 +28,7 @@ export function TrackRecord() {
               { label: "発注", value: "初回" },
             ]} />
             <Cell year="2026" title="Year Two" highlighted stats={[
-              { label: "出演", value: "30+ 組" },
+              { label: "出演", value: "26 組" },
               { label: "会場", value: "3 エリア" },
               { label: "発注", value: "再発注" },
             ]} />
@@ -60,7 +60,7 @@ function Cell({
     >
       {highlighted && (
         <span className="absolute -top-2 right-4 rounded-full bg-accent px-2 py-[2px] text-[10px] font-mono text-background">
-          NOW
+          LATEST
         </span>
       )}
       <p className="eyebrow">{title}</p>

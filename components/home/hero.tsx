@@ -81,8 +81,8 @@ export function Hero() {
             />
             <Stat
               eyebrow="Account Expansion"
-              value="3.0×"
-              caption="出演 10 → 30+ 組"
+              value="2.6×"
+              caption="出演 10 → 26 組"
             />
             <Stat
               eyebrow="Recurring Operation"

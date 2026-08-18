@@ -137,7 +137,7 @@ export default function VisionPage() {
                 },
                 {
                   when: "2026 Spring",
-                  what: "HIBIYA LIVE FESTIVAL 2026 を3会場・30+組へ拡大。再発注。",
+                  what: "HIBIYA LIVE FESTIVAL 2026 を3会場・26組へ拡大。再発注。",
                 },
                 {
                   when: "2026〜",
