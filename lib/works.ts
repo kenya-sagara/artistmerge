@@ -24,7 +24,7 @@ export const works: Work[] = [
     client: "日比谷エリアマネジメント協会／東京ミッドタウン日比谷",
     role: "音楽プロデュース・出演ブッキング",
     year: "2026",
-    status: "upcoming",
+    status: "completed",
     category: "festival",
     venues: [
       "日比谷ステップ広場",
@@ -47,6 +47,36 @@ export const works: Work[] = [
     ],
     cover: "/images/hibiya-2026-cover.jpg",
     externalUrl: "https://hibiya-festival.artistmerge.jp/",
+  },
+  {
+    slug: "hibiya-music-live-2026",
+    title: "HIBIYA MUSIC LIVE 2026",
+    subtitle: "HIBIYA MID SUMMER 2026 — 夏の金曜夜、屋外ダイナーのライブ",
+    client: "東京ミッドタウンマネジメント株式会社（東京ミッドタウン日比谷）",
+    role: "音楽プロデュース・出演ブッキング",
+    year: "2026",
+    status: "completed",
+    category: "series",
+    venues: [
+      "東京ミッドタウン日比谷 日比谷ステップ広場（屋外）",
+      "屋外ダイナー「HIBIYA SUMMER DINER」",
+    ],
+    dates: "2026年7月24日・31日、8月7日・14日（各金曜）全4回",
+    scale: [
+      { label: "出演", value: "4組" },
+      { label: "開催", value: "全4回" },
+      { label: "ステージ", value: "1日2回" },
+      { label: "入場", value: "無料" },
+    ],
+    summary:
+      "東京ミッドタウン日比谷の夏プログラム「HIBIYA MID SUMMER 2026」の音楽企画。約100席の屋外ダイナー「HIBIYA SUMMER DINER」に面した日比谷ステップ広場を舞台に、7月24日から8月14日までの毎週金曜、1日2ステージ（18:20〜／20:20〜、各約25分）×全4回を編成。タップ×歌×ピアノのトリオからサックス・デュオまで、食事と酒の時間に寄り添う4組をブッキングしました。",
+    highlights: [
+      "屋外ダイナーの営業ピークに合わせた1日2ステージ制（18:20〜／20:20〜）を設計",
+      "施設の定時BGM演出と重ならないタイムテーブルを構築し、館内演出と共存",
+      "タップダンス×ヴォーカル×ピアノ、サックス×キーボード、サックス×ギターなど回ごとに異なる編成をキャスティング",
+      "東京ミッドタウン日比谷の運営会社との直接取引による新規アカウント",
+    ],
+    externalUrl: "https://www.hibiya.tokyo-midtown.com/jp/event/7480/",
   },
   {
     slug: "hibiya-festival-2025",
