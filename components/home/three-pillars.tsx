@@ -1,6 +1,16 @@
 import Link from "next/link";
 
-const PILLARS = [
+type Proof = { text: string; href?: string };
+
+type Pillar = {
+  no: string;
+  label: string;
+  titleJp: string;
+  body: string;
+  proofs: Proof[];
+};
+
+const PILLARS: Pillar[] = [
   {
     no: "01",
     label: "Music",
@@ -8,9 +18,12 @@ const PILLARS = [
     body:
       "Music Director の五十嵐 誠は、メジャーアーティストのレコーディング・ツアーサポート・音楽番組で活動する現役プロ。CEO の相楽 賢哉も複数ビッグバンドのリーダーを務めるプレイヤー。プロの楽曲制作・アレンジ・演奏品質を、自社内で保証します。",
     proofs: [
-      "GrooveCast（楽曲・編曲）",
-      "日比谷 Vibrant City Jazz Orchestra",
-      "Major Recording / Touring 経験",
+      {
+        text: "GrooveCast（楽曲・編曲）",
+        href: "https://www.groovecast.tokyo/",
+      },
+      { text: "日比谷 Vibrant City Jazz Orchestra" },
+      { text: "Major Recording / Touring 経験" },
     ],
   },
   {
@@ -20,9 +33,18 @@ const PILLARS = [
     body:
       "親会社の株式会社サグブレインは、複数業界向けの DX プロダクトを展開する IT 企業。日本・シンガポール（Sagbrain Global）・バングラデシュ（SAGBRAIN Bangladesh）の3拠点で開発し、シンガポールから APAC 展開も推進中（アンサンブル・メーカーも対象）。音楽 IT プロダクトを、その本格的なエンジニアリング基盤の上で、ArtistMerge が理論設計から物理的な実装まで内製しています。「監修だけ」ではなく、コードを書き、プロダクトを動かしているのが、私たちです。",
     proofs: [
-      "MUSIC DAY 運営プラットフォーム（開発・運用中）",
-      "アンサンブル・メーカー（理論設計〜実装）",
-      "親会社：株式会社サグブレイン（DX プラットフォーマー）",
+      {
+        text: "MUSIC DAY 運営プラットフォーム（開発・運用中）",
+        href: "https://music-day.main.jp/",
+      },
+      {
+        text: "アンサンブル・メーカー（理論設計〜実装）",
+        href: "https://sagbrain.com/service/music-ensemble-maker/",
+      },
+      {
+        text: "親会社：株式会社サグブレイン（DX プラットフォーマー）",
+        href: "https://sagbrain.com/",
+      },
     ],
   },
   {
@@ -32,9 +54,9 @@ const PILLARS = [
     body:
       "単発の業務委託ではなく、施設の音楽戦略を一緒に育てる長期パートナーです。日比谷では2023年の MUSIC DAY 月例運営から始まり、年次フェスでは初年度から規模2倍以上に拡大しながら2年連続で発注を継続いただいています。",
     proofs: [
-      "HIBIYA：3年継続（2023〜）",
-      "MUSIC DAY：累計 76+ 回",
-      "Festival：2年連続・規模2倍以上",
+      { text: "HIBIYA：3年継続（2023〜）" },
+      { text: "MUSIC DAY：累計 76+ 回" },
+      { text: "Festival：2年連続・規模2倍以上" },
     ],
   },
 ];
@@ -81,11 +103,25 @@ export function ThreePillars() {
               <ul className="mt-8 pt-6 border-t hairline space-y-2">
                 {p.proofs.map((proof) => (
                   <li
-                    key={proof}
+                    key={proof.text}
                     className="text-[12px] font-mono text-muted-strong flex items-start gap-2"
                   >
                     <span className="text-accent mt-[2px] leading-none">·</span>
-                    <span>{proof}</span>
+                    {proof.href ? (
+                      <a
+                        href={proof.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-accent transition-colors"
+                      >
+                        {proof.text}
+                        <span aria-hidden className="ml-1 text-muted">
+                          ↗
+                        </span>
+                      </a>
+                    ) : (
+                      <span>{proof.text}</span>
+                    )}
                   </li>
                 ))}
               </ul>
