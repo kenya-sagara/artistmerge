@@ -74,7 +74,6 @@ export const works: Work[] = [
       "屋外ダイナーの営業ピークに合わせた1日2ステージ制（18:20〜／20:20〜）を設計",
       "施設の定時BGM演出と重ならないタイムテーブルを構築し、館内演出と共存",
       "タップダンス×ヴォーカル×ピアノ、サックス×キーボード、サックス×ギターなど回ごとに異なる編成をキャスティング",
-      "東京ミッドタウン日比谷の運営会社との直接取引による新規アカウント",
     ],
     cover: "/images/hibiya-mid-summer-2026-kv.jpg",
     externalUrl: "https://www.hibiya.tokyo-midtown.com/jp/event/7480/",
