@@ -17,6 +17,14 @@ export const metadata: Metadata = {
   },
   // 会場との最終確認が済み、受付を始めるまで検索に出さない
   robots: { index: false, follow: false },
+  // このページだけ専用のファビコン（サイト共通の favicon.ico を置き換える）
+  icons: {
+    icon: [
+      { url: asset("/images/valentine-dance-2027/icon.svg"), type: "image/svg+xml" },
+      { url: asset("/images/valentine-dance-2027/icon-32.png"), sizes: "32x32", type: "image/png" },
+    ],
+    apple: asset("/images/valentine-dance-2027/apple-icon.png"),
+  },
 };
 
 type Plan = {

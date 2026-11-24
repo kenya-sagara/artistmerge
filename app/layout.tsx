@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { asset } from "@/lib/asset";
 import { Inter, Noto_Sans_JP, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
   description:
     "日比谷の音楽プログラムを設計する会社。街・施設・アーティスト・観客をひとつの基盤で繋ぎ、ライブエンタメの収益構造を再設計します。",
   metadataBase: new URL("https://artistmerge.jp"),
+  // favicon はファイル規約ではなくここで指定する（イベントLPがページ単位で差し替えられるように）
+  icons: { icon: asset("/favicon.ico") },
   openGraph: {
     title: "ArtistMerge",
     description:
