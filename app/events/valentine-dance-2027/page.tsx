@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { asset } from "@/lib/asset";
 import type { Metadata } from "next";
 
 // 2027/2/14 社交ダンスイベントの予約・決済ページ。
@@ -9,7 +11,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Tokyo Swing Party 2027.2.14 — ArtistMerge",
   description:
-    "2027年2月14日（日）東京ミッドタウン日比谷。ビッグバンドの生演奏とプロダンサーと踊る社交ダンス・パーティー。",
+    "2027年2月14日（日）東京ミッドタウン日比谷。7人編成のジャズバンドの生演奏で、プロダンサーと踊る社交ダンス・パーティー。",
   alternates: {
     canonical: "/events/valentine-dance-2027/",
   },
@@ -72,7 +74,7 @@ const C = {
 };
 
 const HIGHLIGHTS = [
-  { title: "豪華生ジャズバンドの演奏で！", body: "ビッグバンドのメンバーによる生演奏。ライブならではのサウンドで踊れます。" },
+  { title: "豪華生ジャズバンドの演奏で！", body: "MUSIC DAY の専属バンドから選抜した7人編成の生演奏。ライブならではのサウンドで踊れます。" },
   { title: "ゲストの方は「3回」踊れる！", body: "グループ管理で、お一人様あたり計3回、プロダンサーとのダンスを確実にお楽しみいただけます。" },
   { title: "美味しいお食事＆フリードリンク付き！", body: "San Antonio TEX-MEX のお料理と、アルコール・ソフトドリンクの飲み放題。" },
   { title: "迫力のプロショータイム！", body: "締めくくりは、プロダンサーによる華麗なパフォーマンスショー。" },
@@ -172,6 +174,27 @@ export default function ValentineDance2027Page() {
         </div>
       </section>
 
+      {/* Dancer photos */}
+      <section style={{ backgroundColor: C.redDeep }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 pt-16 md:pt-24">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 max-w-[760px] mx-auto">
+            {[
+              { src: "/images/dance-stage.jpg", rot: "-rotate-2" },
+              { src: "/images/dance-ballroom.jpg", rot: "rotate-2 md:translate-y-8" },
+            ].map((p) => (
+              <div
+                key={p.src}
+                className={`relative aspect-[2/3] overflow-hidden rounded-2xl border-4 shadow-[0_10px_0_rgba(0,0,0,0.18)] ${p.rot}`}
+                style={{ borderColor: C.cream }}
+              >
+                <Image src={asset(p.src)} alt="プロダンサーのペア" fill sizes="(min-width: 768px) 380px, 50vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 md:mt-14 text-center text-[12px] opacity-75">写真は過去のイベントに出演したプロダンサーです</p>
+        </div>
+      </section>
+
       {/* Highlights */}
       <section style={{ backgroundColor: C.redDeep }}>
         <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24 grid gap-5 md:grid-cols-2">
@@ -184,6 +207,52 @@ export default function ValentineDance2027Page() {
               <p className="mt-2 text-[14px] md:text-[15px] leading-relaxed opacity-90">{h.body}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Performers */}
+      <section>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24">
+          <div className="text-center">
+            <Eyebrow>Performers</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-5xl font-black">出演</h2>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl p-6 md:p-8" style={{ backgroundColor: C.cream, color: C.ink }}>
+              <p className="text-[12px] font-bold tracking-[0.2em]" style={{ color: C.red }}>
+                LIVE BAND
+              </p>
+              <h3 className="mt-2 text-2xl md:text-3xl font-black leading-tight">
+                日比谷 Vibrant City
+                <br />
+                Jazz Orchestra
+              </h3>
+              <p className="mt-1 text-[13px] font-bold opacity-70">選抜メンバーによるダンスバンド（7名）</p>
+              <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed">
+                2023年から HIBIYA FOOD HALL で続く音楽プログラム「MUSIC DAY」の専属フラッグシップバンド。毎月のレジデンシー出演で日比谷の週末を盛り上げてきたメンバーが、ドラム・ベース・ピアノ・ホーンにパーカッションを加えた編成で、スウィングからラテンまで踊れるナンバーを生演奏します。
+              </p>
+              <Link
+                href="/works/music-day-hibiya-food-hall/"
+                className="mt-5 inline-block text-[13px] font-bold underline underline-offset-4"
+                style={{ color: C.red }}
+              >
+                MUSIC DAY の活動を見る →
+              </Link>
+            </div>
+            <div className="rounded-3xl p-6 md:p-8" style={{ backgroundColor: C.cream, color: C.ink }}>
+              <p className="text-[12px] font-bold tracking-[0.2em]" style={{ color: C.red }}>
+                PRO DANCERS
+              </p>
+              <h3 className="mt-2 text-2xl md:text-3xl font-black leading-tight">
+                dance place FELICE
+              </h3>
+              <p className="mt-1 text-[13px] font-bold opacity-70">プロダンサー 5組10名・司会進行</p>
+              <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed">
+                競技会やパーティーで活躍するプロダンサーが、ダンスタイムでゲストのお相手を務めます。ゲストはグループごとに順番が回り、お一人様3回、プロと一緒に踊れます。締めくくりは、プロダンサーによるショーです。
+              </p>
+              <p className="mt-5 text-[13px] opacity-70">出演ダンサーは決まり次第お知らせします。</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -283,6 +352,45 @@ export default function ValentineDance2027Page() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Venue */}
+      <section>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24 grid gap-10 md:grid-cols-[1fr_1.2fr] items-start">
+          <div>
+            <Eyebrow>Venue</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-4xl font-black">会場</h2>
+            <p className="mt-6 text-2xl font-black leading-snug">San Antonio TEX-MEX</p>
+            <p className="mt-1 text-[15px] font-bold">HIBIYA FOOD HALL（東京ミッドタウン日比谷 B1F）</p>
+            <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed opacity-95">
+              日比谷のフードホールにあるテックスメックス・レストラン。当日は貸切で、お料理とフリードリンクを楽しみながら踊れます。
+            </p>
+          </div>
+          <dl
+            className="rounded-3xl p-6 md:p-8 text-[14px] md:text-[15px]"
+            style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+          >
+            {[
+              ["住所", "〒100-0006 東京都千代田区有楽町1-1-2 東京ミッドタウン日比谷 B1F"],
+              ["アクセス", "東京メトロ日比谷線・千代田線、都営三田線「日比谷駅」直結／JR「有楽町駅」徒歩約5分"],
+              ["更衣室", "ありません。動きやすい服装でお越しください"],
+            ].map(([k, v]) => (
+              <div key={k} className="grid gap-1 md:grid-cols-[6rem_1fr] py-3 first:pt-0" style={{ borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
+                <dt className="font-bold" style={{ color: C.yellow }}>{k}</dt>
+                <dd>{v}</dd>
+              </div>
+            ))}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3%E6%97%A5%E6%AF%94%E8%B0%B7+San+Antonio+TEX-MEX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex h-11 items-center rounded-full px-5 text-[14px] font-bold"
+              style={{ backgroundColor: C.yellow, color: C.ink }}
+            >
+              Google マップで見る →
+            </a>
+          </dl>
         </div>
       </section>
 
