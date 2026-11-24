@@ -123,7 +123,7 @@ export default function ValentineDance2027Page() {
     <div style={{ ...stripes, color: C.cream }} className="font-[family-name:var(--font-jp)]">
       <header className="absolute inset-x-0 top-0 z-20">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 md:px-10">
-          <Link href="/" className="flex items-center gap-2 text-[15px] font-bold tracking-tight">
+          <Link href="/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[15px] font-bold tracking-tight">
             <span className="block h-2 w-2 rounded-full" style={{ backgroundColor: C.yellow }} />
             ArtistMerge
           </Link>
@@ -257,6 +257,8 @@ export default function ValentineDance2027Page() {
               </p>
               <Link
                 href="/works/music-day-hibiya-food-hall/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-5 inline-block text-[13px] font-bold underline underline-offset-4"
                 style={{ color: C.red }}
               >
@@ -469,14 +471,14 @@ export default function ValentineDance2027Page() {
         <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[11px] font-bold tracking-[0.25em] opacity-60">ORGANIZED BY</p>
-            <Link href="/" className="mt-3 inline-flex items-center gap-2 text-xl font-bold">
+            <Link href="/" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-xl font-bold">
               <span className="block h-2 w-2 rounded-full" style={{ backgroundColor: C.yellow }} />
               ArtistMerge
             </Link>
             <p className="mt-2 text-[13px] opacity-80">運営：株式会社アーティストマージ</p>
           </div>
           <div className="flex flex-col gap-2 text-[13px] md:items-end">
-            <Link href="/" className="font-bold hover:opacity-80" style={{ color: C.yellow }}>
+            <Link href="/" target="_blank" rel="noopener noreferrer" className="font-bold hover:opacity-80" style={{ color: C.yellow }}>
               ArtistMerge ホームページへ →
             </Link>
             <a href="mailto:info@artistmerge.jp" className="opacity-80 hover:opacity-100">
