@@ -201,21 +201,13 @@ export default function ValentineDance2027Page() {
       {/* Dancer photos */}
       <section style={{ backgroundColor: C.redDeep }}>
         <div className="mx-auto max-w-[1200px] px-5 md:px-10 pt-16 md:pt-24">
-          <div className="grid grid-cols-2 gap-4 md:gap-8 max-w-[760px] mx-auto">
-            {[
-              { src: "/images/dance-stage.jpg", rot: "-rotate-2" },
-              { src: "/images/dance-ballroom.jpg", rot: "rotate-2 md:translate-y-8" },
-            ].map((p) => (
-              <div
-                key={p.src}
-                className={`relative aspect-[2/3] overflow-hidden rounded-2xl border-4 shadow-[0_10px_0_rgba(0,0,0,0.18)] ${p.rot}`}
-                style={{ borderColor: C.cream }}
-              >
-                <Image src={asset(p.src)} alt="プロダンサーのペア" fill sizes="(min-width: 768px) 380px, 50vw" className="object-cover" />
-              </div>
-            ))}
+          <div
+            className="relative mx-auto aspect-[2/3] w-[68%] max-w-[360px] -rotate-2 overflow-hidden rounded-2xl border-4 shadow-[0_10px_0_rgba(0,0,0,0.18)]"
+            style={{ borderColor: C.cream }}
+          >
+            <Image src={asset("/images/dance-stage.jpg")} alt="プロダンサーのペア" fill sizes="(min-width: 768px) 360px, 68vw" className="object-cover" />
           </div>
-          <p className="mt-6 md:mt-14 text-center text-[12px] opacity-75">写真は過去のイベントに出演したプロダンサーです</p>
+          <p className="mt-6 md:mt-8 text-center text-[12px] opacity-75">写真は過去のイベントに出演したプロダンサーです</p>
         </div>
       </section>
 
