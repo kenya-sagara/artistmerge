@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_JP, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { HideOnLanding } from "@/components/hide-on-landing";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -93,9 +94,13 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <SiteHeader />
+        <HideOnLanding>
+          <SiteHeader />
+        </HideOnLanding>
         <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <HideOnLanding>
+          <SiteFooter />
+        </HideOnLanding>
       </body>
     </html>
   );

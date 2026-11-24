@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { asset } from "@/lib/asset";
 
@@ -65,6 +66,24 @@ const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
 export default function ValentineDance2027Page() {
   return (
     <>
+      <header
+        data-theme="dark"
+        className="absolute inset-x-0 top-0 z-20 text-foreground"
+      >
+        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 md:px-10">
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className="block h-2 w-2 rounded-full bg-accent transition-transform group-hover:scale-125" />
+            <span className="text-[15px] font-medium tracking-tight">ArtistMerge</span>
+          </Link>
+          <a
+            href="#plans"
+            className="inline-flex h-9 items-center rounded-full border border-line-strong px-4 text-[13px] hover:border-accent hover:text-accent transition-colors"
+          >
+            予約する
+          </a>
+        </div>
+      </header>
+
       <section
         data-theme="dark"
         className="relative overflow-hidden bg-background text-foreground border-b hairline"
@@ -246,13 +265,31 @@ export default function ValentineDance2027Page() {
             ))}
           </dl>
           <p className="mt-10 text-[13px] text-muted">
-            主催：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）　／　ダンサー：dance place FELICE
-          </p>
-          <p className="mt-2 text-[13px] text-muted">
-            お問い合わせ：info@artistmerge.jp
+            運営：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）　／　ダンサー：dance place FELICE
           </p>
         </div>
       </section>
+      <footer data-theme="dark" className="bg-background text-foreground">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="eyebrow">Organized by</p>
+            <Link href="/" className="mt-3 inline-flex items-center gap-3 group">
+              <span className="block h-2 w-2 rounded-full bg-accent transition-transform group-hover:scale-125" />
+              <span className="text-xl font-medium tracking-tight">ArtistMerge</span>
+            </Link>
+            <p className="mt-2 text-[13px] text-muted-strong">運営：株式会社アーティストマージ</p>
+          </div>
+          <div className="flex flex-col gap-2 text-[13px] text-muted-strong md:items-end">
+            <Link href="/" className="hover:text-accent transition-colors">
+              ArtistMerge ホームページへ →
+            </Link>
+            <a href="mailto:info@artistmerge.jp" className="hover:text-accent transition-colors">
+              お問い合わせ：info@artistmerge.jp
+            </a>
+            <p className="text-muted">© 2026 ArtistMerge Inc.</p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
