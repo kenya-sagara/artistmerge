@@ -1,0 +1,53 @@
+name: Valentine dance seats
+
+# 2027/2/14 ダンスイベントの席数監視。Stripe の売れ行きを数え、定員で決済リンクを止める。
+# 席数が変わったら seats.json をコミットし、サイトを再デプロイして LP の「残り◯席」を更新する。
+# イベントが終わったらこのファイルを消す。
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: valentine-seats
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Count seats and close payment links
+        env:
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+        run: node scripts/valentine-seats.mjs
+
+      - name: Commit seats.json and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- app/events/valentine-dance-2027/seats.json; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/events/valentine-dance-2027/seats.json
+          git commit -m "Update valentine dance seats"
+          git push origin HEAD:main
+          # GITHUB_TOKEN での push は他のワークフローを起動しないので、デプロイは明示的に呼ぶ
+          gh workflow run deploy-pages.yml --ref main

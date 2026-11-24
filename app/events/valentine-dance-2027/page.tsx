@@ -1,12 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
+import booking from "./booking.json";
+import seatStatus from "./seats.json";
 import type { Metadata } from "next";
 
 // 2027/2/14 社交ダンスイベントの予約・決済ページ。
-// 決済は KOMOJU の決済リンク（ダッシュボードで発行）に飛ばす。サイトは静的書き出しなので、
-// 席数の上限は各リンクの「利用回数の上限」で持たせる（1決済＝1名）。
-// リンクを発行したら PLANS の paymentUrl に貼る。null のあいだはボタンが「受付開始前」になる。
+// 決済は Stripe の決済リンク（ダッシュボードで発行、人数は決済画面で1〜4名から選ぶ）に飛ばす。
+// プラン・定員・リンクは booking.json に持つ。リンクを貼るまでボタンは「受付開始前」になる。
+// サイトは静的書き出しなので、売れた人数の集計と定員での締め切りは GitHub Actions
+// （.github/workflows/valentine-seats.yml）が行い、結果を seats.json に書く。
 
 export const metadata: Metadata = {
   title: "Tokyo Swing Party 2027.2.14 — ArtistMerge",
@@ -28,6 +31,7 @@ export const metadata: Metadata = {
 };
 
 type Plan = {
+  key: string;
   name: string;
   price: number;
   seats: number;
@@ -35,22 +39,15 @@ type Plan = {
   paymentUrl: string | null;
 };
 
-const PLANS: Plan[] = [
-  {
-    name: "着席確約プラン",
-    price: 20000,
-    seats: 20,
-    body: ["バンド正面のテーブル・カウンター席（相席）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
-    paymentUrl: null,
-  },
-  {
-    name: "一般席プラン",
-    price: 15000,
-    seats: 40,
-    body: ["両サイドの一般席（半立食）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
-    paymentUrl: null,
-  },
-];
+const PLAN_BODY: Record<string, string[]> = {
+  seated: ["バンド正面のテーブル・カウンター席（相席）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
+  general: ["両サイドの一般席（半立食）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
+};
+
+const PLANS: Plan[] = booking.plans.map((p) => ({ ...p, body: PLAN_BODY[p.key] ?? [] }));
+
+type SeatState = { sold: number; remaining: number; closed: boolean };
+const SEATS = seatStatus.plans as Record<string, SeatState | undefined>;
 
 const TIMETABLE = [
   { time: "16:00", body: "開場（ドリンク・おつまみ）" },
@@ -61,9 +58,9 @@ const TIMETABLE = [
 ];
 
 const NOTES = [
-  "1回のお申し込みで1名様分です。複数名でご参加の場合は、お一人ずつお申し込みください。",
-  "お支払いは KOMOJU の決済ページで行います。決済が完了した時点で予約確定となり、確認メールが届きます。",
-  "コンビニ払いなどの後払いは、お支払いが済むまで席は確保されません。定員に達した時点で受付を終了します。",
+  `1回のお申し込みで${booking.maxPerOrder}名様までご予約いただけます（人数は決済画面で選べます）。${booking.maxPerOrder + 1}名様以上でのご参加はお問い合わせください。`,
+  "お支払いは Stripe の決済ページで行います。決済が完了した時点で予約確定となり、確認メールが届きます。",
+  "各プランとも、定員に達した時点で受付を終了します。",
   "お席の指定はできません（着席確約プランは確約エリア内のいずれかのお席です）。",
   "会場に更衣室はありません。ダンスシューズ等は各自でご用意ください。",
   "ダンスタイムは1曲につきゲスト5名がプロダンサーと踊ります。お一人3回踊れます。",
@@ -301,7 +298,20 @@ export default function ValentineDance2027Page() {
                   ))}
                 </ul>
                 <div className="mt-auto pt-8">
-                  {plan.paymentUrl ? (
+                  {SEATS[plan.key] && !SEATS[plan.key]!.closed && (
+                    <p className="mb-3 text-center text-[14px] font-bold" style={{ color: C.red }}>
+                      残り {SEATS[plan.key]!.remaining} 席
+                    </p>
+                  )}
+                  {SEATS[plan.key]?.closed ? (
+                    <span
+                      aria-disabled="true"
+                      className="inline-flex h-14 w-full items-center justify-center rounded-full text-[15px] font-black text-white"
+                      style={{ backgroundColor: C.ink }}
+                    >
+                      満席になりました
+                    </span>
+                  ) : plan.paymentUrl ? (
                     <a
                       href={plan.paymentUrl}
                       target="_blank"
@@ -309,7 +319,7 @@ export default function ValentineDance2027Page() {
                       className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-full text-[16px] font-black transition-transform hover:-translate-y-0.5"
                       style={{ backgroundColor: C.red, color: "#fff" }}
                     >
-                      このプランで予約する →
+                      人数を選んで予約する →
                     </a>
                   ) : (
                     <span
@@ -320,6 +330,7 @@ export default function ValentineDance2027Page() {
                       受付開始前です（12月中旬開始予定）
                     </span>
                   )}
+                  <p className="mt-3 text-center text-[12px] opacity-70">1回で{booking.maxPerOrder}名様までお申し込みいただけます</p>
                 </div>
               </div>
             ))}
@@ -415,7 +426,7 @@ export default function ValentineDance2027Page() {
               ["メールアドレス", "info@artistmerge.jp"],
               ["販売価格", "各プランに表示（税込）"],
               ["商品代金以外の必要料金", "なし（コンビニ払い等の手数料が発生する場合はお客様のご負担）"],
-              ["お支払い方法", "KOMOJU の決済ページで選べる方法（クレジットカード等）"],
+              ["お支払い方法", "Stripe の決済ページで選べる方法（クレジットカード等）"],
               ["お支払い時期", "お申し込み時。後払いの方法は各決済方法の期限まで"],
               ["提供時期", "2027年2月14日（日）イベント当日"],
               ["キャンセル・返金", "キャンセル規定は受付開始時に掲載します"],

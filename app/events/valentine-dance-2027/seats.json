@@ -1,0 +1,5 @@
+{
+  "_comment": "GitHub Actions（valentine-seats.yml）が Stripe の売れ行きから自動で書き換える。手で編集しない。",
+  "updatedAt": null,
+  "plans": {}
+}
