@@ -6,15 +6,35 @@ import seatStatus from "./seats.json";
 import type { Metadata } from "next";
 
 // 2027/2/14 社交ダンスイベントの予約・決済ページ。
-// 決済は Stripe の決済リンク（ダッシュボードで発行、人数は決済画面で1〜4名から選ぶ）に飛ばす。
+// 決済は Stripe の決済リンク（ダッシュボードで発行、人数は決済画面で選ぶ。上限は booking.json の maxPerOrder）に飛ばす。
 // プラン・定員・リンクは booking.json に持つ。リンクを貼るまでボタンは「受付開始前」になる。
 // サイトは静的書き出しなので、売れた人数の集計と定員での締め切りは GitHub Actions
 // （.github/workflows/valentine-seats.yml）が行い、結果を seats.json に書く。
 
+const SHARE_TITLE = "東京 Swing Party 2027.2.14（日）｜生バンドとプロダンサーと踊る社交ダンスパーティー";
+const SHARE_DESC =
+  "バレンタインの日比谷で、7人編成のジャズバンドの生演奏とプロダンサーと踊る社交ダンスパーティー。東京ミッドタウン日比谷 B1F・San Antonio TEX-MEX、16:00開場。お食事・フリードリンク付き、定員60名。";
+const SHARE_IMAGE = { url: asset("/images/valentine-dance-2027/og.jpg"), width: 1200, height: 630, alt: "東京 Swing Party 2027.2.14" };
+
 export const metadata: Metadata = {
-  title: "Tokyo Swing Party 2027.2.14 — ArtistMerge",
-  description:
-    "2027年2月14日（日）東京ミッドタウン日比谷。7人編成のジャズバンドの生演奏で、プロダンサーと踊る社交ダンス・パーティー。",
+  title: "東京 Swing Party 2027.2.14 — ArtistMerge",
+  description: SHARE_DESC,
+  // SNS でシェアしたときのタイトル・説明・画像（サイト共通の設定を置き換える）
+  openGraph: {
+    title: SHARE_TITLE,
+    description: SHARE_DESC,
+    url: "https://artistmerge.jp/events/valentine-dance-2027/",
+    siteName: "ArtistMerge",
+    type: "website",
+    locale: "ja_JP",
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SHARE_TITLE,
+    description: SHARE_DESC,
+    images: [SHARE_IMAGE.url],
+  },
   alternates: {
     canonical: "/events/valentine-dance-2027/",
   },

@@ -1,6 +1,6 @@
 {
   "_comment": "予約受付の設定。paymentUrl に Stripe の決済リンク（https://buy.stripe.com/...）を貼ると予約ボタンが有効になる。seats はプランの定員（人数）、maxPerOrder は1回で申し込める最大人数。holdBack は監視の遅れに備えて自動で止める前に残しておく席数。",
-  "maxPerOrder": 4,
+  "maxPerOrder": 6,
   "holdBack": 0,
   "plans": [
     { "key": "seated", "name": "着席確約プラン", "price": 20000, "seats": 20, "paymentUrl": null },
