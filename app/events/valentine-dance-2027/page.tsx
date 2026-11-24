@@ -1,6 +1,7 @@
+import Link from "next/link";
 import Image from "next/image";
-import type { Metadata } from "next";
 import { asset } from "@/lib/asset";
+import type { Metadata } from "next";
 
 // 2027/2/14 社交ダンスイベントの予約・決済ページ。
 // 決済は KOMOJU の決済リンク（ダッシュボードで発行）に飛ばす。サイトは静的書き出しなので、
@@ -10,7 +11,7 @@ import { asset } from "@/lib/asset";
 export const metadata: Metadata = {
   title: "Tokyo Swing Party 2027.2.14 — ArtistMerge",
   description:
-    "2027年2月14日（日）東京ミッドタウン日比谷。ビッグバンドの生演奏とプロダンサーと踊る社交ダンス・パーティー。",
+    "2027年2月14日（日）東京ミッドタウン日比谷。7人編成のジャズバンドの生演奏で、プロダンサーと踊る社交ダンス・パーティー。",
   alternates: {
     canonical: "/events/valentine-dance-2027/",
   },
@@ -31,14 +32,14 @@ const PLANS: Plan[] = [
     name: "着席確約プラン",
     price: 20000,
     seats: 20,
-    body: ["バンド正面の確約席", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
+    body: ["バンド正面のテーブル・カウンター席（相席）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
     paymentUrl: null,
   },
   {
-    name: "通常プラン",
+    name: "一般席プラン",
     price: 15000,
     seats: 40,
-    body: ["両サイド・カウンターの一般席", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
+    body: ["両サイドの一般席（半立食）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
     paymentUrl: null,
   },
 ];
@@ -60,118 +61,253 @@ const NOTES = [
   "ダンスタイムは1曲につきゲスト5名がプロダンサーと踊ります。お一人3回踊れます。",
 ];
 
-const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
+const yen = (n: number) => n.toLocaleString("ja-JP");
+
+// 10/11 告知用フライヤー（店舗制作）のトーンに合わせた配色
+const C = {
+  red: "#E5524C",
+  redDeep: "#C9403B",
+  yellow: "#F4D80B",
+  teal: "#1E6F6A",
+  cream: "#FFF4E4",
+  ink: "#2B1714",
+};
+
+const HIGHLIGHTS = [
+  { title: "豪華生ジャズバンドの演奏で！", body: "MUSIC DAY の専属バンドから選抜した7人編成の生演奏。ライブならではのサウンドで踊れます。" },
+  { title: "ゲストの方は「3回」踊れる！", body: "グループ管理で、お一人様あたり計3回、プロダンサーとのダンスを確実にお楽しみいただけます。" },
+  { title: "美味しいお食事＆フリードリンク付き！", body: "San Antonio TEX-MEX のお料理と、アルコール・ソフトドリンクの飲み放題。" },
+  { title: "迫力のプロショータイム！", body: "締めくくりは、プロダンサーによる華麗なパフォーマンスショー。" },
+];
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-[12px] font-bold tracking-[0.25em] uppercase" style={{ color: C.yellow }}>
+      {children}
+    </p>
+  );
+}
 
 export default function ValentineDance2027Page() {
+  const stripes = {
+    backgroundColor: C.red,
+    backgroundImage:
+      "repeating-linear-gradient(-35deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 9px)",
+  };
+
   return (
-    <>
-      <section
-        data-theme="dark"
-        className="relative overflow-hidden bg-background text-foreground border-b hairline"
-      >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={asset("/images/hibiya-vibrant-city-jo.jpg")}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover opacity-25"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(193,154,75,0.18),transparent_55%),linear-gradient(180deg,rgba(26,24,19,0.6),#1a1813)]" />
-          <div className="grain absolute inset-0" data-theme="dark" />
+    <div style={{ ...stripes, color: C.cream }} className="font-[family-name:var(--font-jp)]">
+      <header className="absolute inset-x-0 top-0 z-20">
+        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 md:px-10">
+          <Link href="/" className="flex items-center gap-2 text-[15px] font-bold tracking-tight">
+            <span className="block h-2 w-2 rounded-full" style={{ backgroundColor: C.yellow }} />
+            ArtistMerge
+          </Link>
+          <a
+            href="#plans"
+            className="inline-flex h-9 items-center rounded-full px-5 text-[13px] font-bold transition-transform hover:scale-105"
+            style={{ backgroundColor: C.yellow, color: C.ink }}
+          >
+            予約する
+          </a>
         </div>
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 pt-32 md:pt-44 pb-20 md:pb-28">
-          <div className="flex items-center gap-3">
-            <span className="block h-[1px] w-10 bg-accent" />
-            <p className="eyebrow">2027.2.14 SUN — Valentine&apos;s Day</p>
-          </div>
-          <h1 className="display mt-8 text-5xl md:text-7xl lg:text-8xl tracking-tight">
-            Tokyo Swing Party
-          </h1>
-          <p className="display-jp mt-8 max-w-3xl text-xl md:text-2xl leading-relaxed text-muted-strong">
-            ビッグバンドの生演奏で、プロダンサーと踊る。
-            <br className="hidden md:block" />
-            日比谷のフードホールで過ごす、バレンタインの午後。
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full opacity-30 blur-2xl"
+          style={{ background: `radial-gradient(circle, ${C.yellow}, transparent 65%)` }}
+        />
+        <div
+          aria-hidden
+          className="absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full opacity-40 blur-2xl"
+          style={{ background: `radial-gradient(circle, ${C.teal}, transparent 65%)` }}
+        />
+        <div className="relative mx-auto max-w-[1200px] px-5 md:px-10 pt-28 md:pt-36 pb-20 md:pb-28 text-center">
+          <p
+            className="inline-block rounded-full px-4 py-1 text-[12px] md:text-[13px] font-bold tracking-[0.2em]"
+            style={{ backgroundColor: C.teal }}
+          >
+            VALENTINE&apos;S DAY SPECIAL
           </p>
-          <dl className="mt-12 grid gap-6 md:grid-cols-3 max-w-4xl">
-            <div>
-              <dt className="eyebrow">Date</dt>
-              <dd className="mt-2 text-lg">2027年2月14日（日）16:00〜18:30</dd>
-            </div>
-            <div>
-              <dt className="eyebrow">Venue</dt>
-              <dd className="mt-2 text-lg">
-                San Antonio TEX-MEX
-                <br />
-                東京ミッドタウン日比谷 B1
-              </dd>
-            </div>
-            <div>
-              <dt className="eyebrow">Capacity</dt>
-              <dd className="mt-2 text-lg">60名（先着順）</dd>
-            </div>
-          </dl>
+          <h1
+            className="mt-6 font-black leading-[0.95] tracking-tight"
+            style={{ color: C.yellow }}
+          >
+            <span className="block text-6xl md:text-8xl">東京</span>
+            <span className="block text-7xl md:text-[9rem] font-[family-name:var(--font-inter)]">Swing</span>
+            <span className="block text-7xl md:text-[9rem] font-[family-name:var(--font-inter)]">Party</span>
+          </h1>
+          <p className="mt-10 font-black tracking-tight font-[family-name:var(--font-inter)]" style={{ color: C.yellow }}>
+            <span className="text-5xl md:text-7xl">2027.2.14</span>
+            <span className="ml-3 text-2xl md:text-3xl">SUN</span>
+          </p>
+          <p className="mt-3 text-xl md:text-2xl font-bold" style={{ color: C.yellow }}>
+            16:00 開場 / 18:30 終了
+          </p>
+          <div className="mt-10 inline-flex flex-col md:flex-row items-center gap-3 md:gap-4">
+            <span
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full text-[13px] font-black"
+              style={{ backgroundColor: C.cream, color: C.red }}
+            >
+              会場
+            </span>
+            <p className="text-lg md:text-xl font-bold leading-snug">
+              HIBIYA FOOD HALL 内<br className="md:hidden" />{" "}
+              <span className="whitespace-nowrap">San Antonio TEX-MEX</span>
+              <br />
+              （東京ミッドタウン日比谷 B1F）
+            </p>
+          </div>
           <div className="mt-12">
             <a
               href="#plans"
-              className="group inline-flex h-12 items-center gap-3 rounded-full bg-foreground px-6 text-[14px] font-medium text-background hover:bg-accent transition-colors"
+              className="inline-flex h-14 items-center gap-3 rounded-full px-8 text-[16px] font-black shadow-[0_6px_0_rgba(0,0,0,0.18)] transition-transform hover:-translate-y-0.5"
+              style={{ backgroundColor: C.yellow, color: C.ink }}
             >
-              プランを選んで予約する
-              <span aria-hidden className="transition-transform group-hover:translate-y-0.5">
-                ↓
-              </span>
+              プランを選んで予約する ↓
             </a>
+            <p className="mt-4 text-[13px] opacity-90">定員60名・先着順</p>
           </div>
         </div>
       </section>
 
-      <section id="plans" className="border-b hairline scroll-mt-20">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28">
-          <div className="flex items-center gap-3">
-            <span className="block h-[1px] w-10 bg-accent" />
-            <p className="eyebrow">Plans</p>
+      {/* Dancer photos */}
+      <section style={{ backgroundColor: C.redDeep }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 pt-16 md:pt-24">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 max-w-[760px] mx-auto">
+            {[
+              { src: "/images/dance-stage.jpg", rot: "-rotate-2" },
+              { src: "/images/dance-ballroom.jpg", rot: "rotate-2 md:translate-y-8" },
+            ].map((p) => (
+              <div
+                key={p.src}
+                className={`relative aspect-[2/3] overflow-hidden rounded-2xl border-4 shadow-[0_10px_0_rgba(0,0,0,0.18)] ${p.rot}`}
+                style={{ borderColor: C.cream }}
+              >
+                <Image src={asset(p.src)} alt="プロダンサーのペア" fill sizes="(min-width: 768px) 380px, 50vw" className="object-cover" />
+              </div>
+            ))}
           </div>
-          <h2 className="display-jp mt-6 text-3xl md:text-5xl">参加プラン</h2>
-          <p className="mt-6 text-[14px] text-muted-strong">表示価格はお一人様・税込です。</p>
+          <p className="mt-6 md:mt-14 text-center text-[12px] opacity-75">写真は過去のイベントに出演したプロダンサーです</p>
+        </div>
+      </section>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+      {/* Highlights */}
+      <section style={{ backgroundColor: C.redDeep }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24 grid gap-5 md:grid-cols-2">
+          {HIGHLIGHTS.map((h) => (
+            <div key={h.title} className="rounded-2xl p-6 md:p-7" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+              <p className="flex items-center gap-3 text-lg md:text-xl font-black">
+                <span aria-hidden style={{ color: C.yellow }}>♪</span>
+                {h.title}
+              </p>
+              <p className="mt-2 text-[14px] md:text-[15px] leading-relaxed opacity-90">{h.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Performers */}
+      <section>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24">
+          <div className="text-center">
+            <Eyebrow>Performers</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-5xl font-black">出演</h2>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl p-6 md:p-8" style={{ backgroundColor: C.cream, color: C.ink }}>
+              <p className="text-[12px] font-bold tracking-[0.2em]" style={{ color: C.red }}>
+                LIVE BAND
+              </p>
+              <h3 className="mt-2 text-2xl md:text-3xl font-black leading-tight">
+                日比谷 Vibrant City
+                <br />
+                Jazz Orchestra
+              </h3>
+              <p className="mt-1 text-[13px] font-bold opacity-70">選抜メンバーによるダンスバンド（7名）</p>
+              <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed">
+                2023年から HIBIYA FOOD HALL で続く音楽プログラム「MUSIC DAY」の専属フラッグシップバンド。毎月のレジデンシー出演で日比谷の週末を盛り上げてきたメンバーが、ドラム・ベース・ピアノ・ホーンにパーカッションを加えた編成で、スウィングからラテンまで踊れるナンバーを生演奏します。
+              </p>
+              <Link
+                href="/works/music-day-hibiya-food-hall/"
+                className="mt-5 inline-block text-[13px] font-bold underline underline-offset-4"
+                style={{ color: C.red }}
+              >
+                MUSIC DAY の活動を見る →
+              </Link>
+            </div>
+            <div className="rounded-3xl p-6 md:p-8" style={{ backgroundColor: C.cream, color: C.ink }}>
+              <p className="text-[12px] font-bold tracking-[0.2em]" style={{ color: C.red }}>
+                PRO DANCERS
+              </p>
+              <h3 className="mt-2 text-2xl md:text-3xl font-black leading-tight">
+                dance place FELICE
+              </h3>
+              <p className="mt-1 text-[13px] font-bold opacity-70">プロダンサー 5組10名・司会進行</p>
+              <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed">
+                競技会やパーティーで活躍するプロダンサーが、ダンスタイムでゲストのお相手を務めます。ゲストはグループごとに順番が回り、お一人様3回、プロと一緒に踊れます。締めくくりは、プロダンサーによるショーです。
+              </p>
+              <p className="mt-5 text-[13px] opacity-70">出演ダンサーは決まり次第お知らせします。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Plans */}
+      <section id="plans" className="scroll-mt-16">
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24">
+          <div className="text-center">
+            <Eyebrow>Plans</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-5xl font-black">参加プラン</h2>
+            <p className="mt-3 text-[14px] opacity-90">表示価格はお一人様・税込です。</p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {PLANS.map((plan) => (
               <div
                 key={plan.name}
-                className="flex flex-col rounded-2xl border border-line-strong bg-surface p-6 md:p-8"
+                className="flex flex-col rounded-3xl p-6 md:p-8 shadow-[0_10px_0_rgba(0,0,0,0.12)]"
+                style={{ backgroundColor: C.cream, color: C.ink }}
               >
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="display-jp text-2xl">{plan.name}</h3>
-                  <span className="text-[12px] font-mono text-muted">{plan.seats}席</span>
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="text-2xl font-black">{plan.name}</h3>
+                  <span
+                    className="rounded-full px-3 py-1 text-[12px] font-bold text-white"
+                    style={{ backgroundColor: C.teal }}
+                  >
+                    {plan.seats}席限定
+                  </span>
                 </div>
-                <p className="display mt-4 text-4xl md:text-5xl tracking-tight">{yen(plan.price)}</p>
-                <ul className="mt-6 space-y-2 text-[15px] text-muted-strong">
+                <p className="mt-4 font-black tracking-tight font-[family-name:var(--font-inter)]" style={{ color: C.red }}>
+                  <span className="text-5xl md:text-6xl">{yen(plan.price)}</span>
+                  <span className="ml-1 text-xl font-bold">円（税込）</span>
+                </p>
+                <ul className="mt-6 space-y-2 text-[15px]">
                   {plan.body.map((b) => (
                     <li key={b} className="flex gap-3">
-                      <span aria-hidden className="text-accent">—</span>
+                      <span aria-hidden style={{ color: C.red }}>●</span>
                       {b}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8" />
-                <div className="mt-auto pt-6 border-t hairline">
+                <div className="mt-auto pt-8">
                   {plan.paymentUrl ? (
                     <a
                       href={plan.paymentUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-foreground px-6 text-[14px] font-medium text-background hover:bg-accent transition-colors"
+                      className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-full text-[16px] font-black transition-transform hover:-translate-y-0.5"
+                      style={{ backgroundColor: C.red, color: "#fff" }}
                     >
-                      このプランで予約する（決済へ）
-                      <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                        →
-                      </span>
+                      このプランで予約する →
                     </a>
                   ) : (
                     <span
                       aria-disabled="true"
-                      className="inline-flex h-12 w-full items-center justify-center rounded-full border border-line-strong px-6 text-[14px] text-muted"
+                      className="inline-flex h-14 w-full items-center justify-center rounded-full border-2 border-dashed text-[14px] font-bold opacity-60"
+                      style={{ borderColor: C.ink }}
                     >
                       受付開始前です（12月中旬開始予定）
                     </span>
@@ -183,34 +319,35 @@ export default function ValentineDance2027Page() {
         </div>
       </section>
 
-      <section className="border-b hairline">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28 grid gap-16 md:grid-cols-2">
+      {/* Timetable + notes */}
+      <section style={{ backgroundColor: C.redDeep }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24 grid gap-12 md:grid-cols-2">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="block h-[1px] w-10 bg-accent" />
-              <p className="eyebrow">Timetable</p>
-            </div>
-            <h2 className="display-jp mt-6 text-3xl md:text-4xl">当日の流れ</h2>
-            <ul className="mt-10 border-t hairline">
+            <Eyebrow>Time Table</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-4xl font-black">当日の流れ</h2>
+            <ul className="mt-8 space-y-2">
               {TIMETABLE.map((t) => (
-                <li key={t.time} className="grid grid-cols-[5rem_1fr] gap-4 py-5 border-b hairline">
-                  <span className="font-mono text-[14px] text-accent">{t.time}</span>
-                  <span className="text-[15px]">{t.body}</span>
+                <li
+                  key={t.time}
+                  className="grid grid-cols-[4.5rem_1fr] items-center gap-4 rounded-xl px-4 py-3"
+                  style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+                >
+                  <span className="text-lg font-black font-[family-name:var(--font-inter)]" style={{ color: C.yellow }}>
+                    {t.time}
+                  </span>
+                  <span className="text-[15px] font-bold">{t.body}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <div className="flex items-center gap-3">
-              <span className="block h-[1px] w-10 bg-accent" />
-              <p className="eyebrow">Notes</p>
-            </div>
-            <h2 className="display-jp mt-6 text-3xl md:text-4xl">ご予約の前に</h2>
-            <ul className="mt-10 space-y-4 text-[14px] md:text-[15px] leading-relaxed text-muted-strong">
+            <Eyebrow>Notes</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-4xl font-black">ご予約の前に</h2>
+            <ul className="mt-8 space-y-3 text-[14px] md:text-[15px] leading-relaxed">
               {NOTES.map((n) => (
                 <li key={n} className="flex gap-3">
-                  <span aria-hidden className="text-accent">・</span>
-                  {n}
+                  <span aria-hidden style={{ color: C.yellow }}>●</span>
+                  <span className="opacity-95">{n}</span>
                 </li>
               ))}
             </ul>
@@ -218,14 +355,50 @@ export default function ValentineDance2027Page() {
         </div>
       </section>
 
-      <section className="border-b hairline">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28">
-          <div className="flex items-center gap-3">
-            <span className="block h-[1px] w-10 bg-accent" />
-            <p className="eyebrow">Legal</p>
+      {/* Venue */}
+      <section>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24 grid gap-10 md:grid-cols-[1fr_1.2fr] items-start">
+          <div>
+            <Eyebrow>Venue</Eyebrow>
+            <h2 className="mt-3 text-3xl md:text-4xl font-black">会場</h2>
+            <p className="mt-6 text-2xl font-black leading-snug">San Antonio TEX-MEX</p>
+            <p className="mt-1 text-[15px] font-bold">HIBIYA FOOD HALL（東京ミッドタウン日比谷 B1F）</p>
+            <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed opacity-95">
+              日比谷のフードホールにあるテックスメックス・レストラン。当日は貸切で、お料理とフリードリンクを楽しみながら踊れます。
+            </p>
           </div>
-          <h2 className="display-jp mt-6 text-2xl md:text-3xl">特定商取引法に基づく表記</h2>
-          <dl className="mt-10 border-t hairline text-[14px]">
+          <dl
+            className="rounded-3xl p-6 md:p-8 text-[14px] md:text-[15px]"
+            style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+          >
+            {[
+              ["住所", "〒100-0006 東京都千代田区有楽町1-1-2 東京ミッドタウン日比谷 B1F"],
+              ["アクセス", "東京メトロ日比谷線・千代田線、都営三田線「日比谷駅」直結／JR「有楽町駅」徒歩約5分"],
+              ["更衣室", "ありません。動きやすい服装でお越しください"],
+            ].map(([k, v]) => (
+              <div key={k} className="grid gap-1 md:grid-cols-[6rem_1fr] py-3 first:pt-0" style={{ borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
+                <dt className="font-bold" style={{ color: C.yellow }}>{k}</dt>
+                <dd>{v}</dd>
+              </div>
+            ))}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E3%83%9F%E3%83%83%E3%83%89%E3%82%BF%E3%82%A6%E3%83%B3%E6%97%A5%E6%AF%94%E8%B0%B7+San+Antonio+TEX-MEX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex h-11 items-center rounded-full px-5 text-[14px] font-bold"
+              style={{ backgroundColor: C.yellow, color: C.ink }}
+            >
+              Google マップで見る →
+            </a>
+          </dl>
+        </div>
+      </section>
+
+      {/* Legal */}
+      <section style={{ backgroundColor: C.cream, color: C.ink }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-14 md:py-20">
+          <h2 className="text-xl md:text-2xl font-black">特定商取引法に基づく表記</h2>
+          <dl className="mt-6 text-[13px] md:text-[14px]" style={{ borderTop: "1px solid rgba(43,23,20,0.15)" }}>
             {[
               ["販売事業者", "株式会社アーティストマージ"],
               ["運営責任者", "相楽 賢哉"],
@@ -239,20 +412,43 @@ export default function ValentineDance2027Page() {
               ["提供時期", "2027年2月14日（日）イベント当日"],
               ["キャンセル・返金", "キャンセル規定は受付開始時に掲載します"],
             ].map(([k, v]) => (
-              <div key={k} className="grid gap-2 md:grid-cols-[14rem_1fr] py-4 border-b hairline">
-                <dt className="text-muted">{k}</dt>
+              <div
+                key={k}
+                className="grid gap-1 md:grid-cols-[14rem_1fr] py-3"
+                style={{ borderBottom: "1px solid rgba(43,23,20,0.15)" }}
+              >
+                <dt className="opacity-60">{k}</dt>
                 <dd>{v}</dd>
               </div>
             ))}
           </dl>
-          <p className="mt-10 text-[13px] text-muted">
-            主催：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）　／　ダンサー：dance place FELICE
-          </p>
-          <p className="mt-2 text-[13px] text-muted">
-            お問い合わせ：info@artistmerge.jp
+          <p className="mt-6 text-[12px] opacity-70">
+            運営：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）　／　ダンサー：dance place FELICE
           </p>
         </div>
       </section>
-    </>
+
+      <footer style={{ backgroundColor: C.ink }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-[11px] font-bold tracking-[0.25em] opacity-60">ORGANIZED BY</p>
+            <Link href="/" className="mt-3 inline-flex items-center gap-2 text-xl font-bold">
+              <span className="block h-2 w-2 rounded-full" style={{ backgroundColor: C.yellow }} />
+              ArtistMerge
+            </Link>
+            <p className="mt-2 text-[13px] opacity-80">運営：株式会社アーティストマージ</p>
+          </div>
+          <div className="flex flex-col gap-2 text-[13px] md:items-end">
+            <Link href="/" className="font-bold hover:opacity-80" style={{ color: C.yellow }}>
+              ArtistMerge ホームページへ →
+            </Link>
+            <a href="mailto:info@artistmerge.jp" className="opacity-80 hover:opacity-100">
+              お問い合わせ：info@artistmerge.jp
+            </a>
+            <p className="opacity-50">© 2026 ArtistMerge Inc.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
