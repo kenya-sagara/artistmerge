@@ -60,8 +60,8 @@ type Plan = {
 };
 
 const PLAN_BODY: Record<string, string[]> = {
-  seated: ["バンド正面のテーブル・カウンター席（相席）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
-  general: ["両サイドの一般席（半立食）", "フリードリンク・お料理付き", "ダンスタイムに参加（3回）"],
+  seated: ["バンド正面のテーブル・カウンター席（相席）", "フリードリンク・お料理付き", "プロダンサーがお相手するダンスタイム"],
+  general: ["両サイドの一般席（半立食）", "フリードリンク・お料理付き", "プロダンサーがお相手するダンスタイム"],
 };
 
 const PLANS: Plan[] = booking.plans.map((p) => ({ ...p, body: PLAN_BODY[p.key] ?? [] }));
@@ -83,7 +83,6 @@ const NOTES = [
   "各プランとも、定員に達した時点で受付を終了します。",
   "お席の指定はできません（着席確約プランは確約エリア内のいずれかのお席です）。",
   "会場に更衣室はありません。ダンスシューズ等は各自でご用意ください。",
-  "ダンスタイムは1曲につきゲスト5名がプロダンサーと踊ります。お一人3回踊れます。",
 ];
 
 const yen = (n: number) => n.toLocaleString("ja-JP");
@@ -100,7 +99,7 @@ const C = {
 
 const HIGHLIGHTS = [
   { title: "豪華生ジャズバンドの演奏で！", body: "MUSIC DAY の専属バンドから選抜した7人編成の生演奏。ライブならではのサウンドで踊れます。" },
-  { title: "ゲストの方は「3回」踊れる！", body: "グループ管理で、お一人様あたり計3回、プロダンサーとのダンスを確実にお楽しみいただけます。" },
+  { title: "プロダンサーと踊れる！", body: "ダンスタイムでは、プロダンサーがゲストのお相手をします。" },
   { title: "美味しいお食事＆フリードリンク付き！", body: "San Antonio TEX-MEX のお料理と、アルコール・ソフトドリンクの飲み放題。" },
   { title: "迫力のプロショータイム！", body: "締めくくりは、プロダンサーによる華麗なパフォーマンスショー。" },
 ];
@@ -269,11 +268,10 @@ export default function ValentineDance2027Page() {
                 PRO DANCERS
               </p>
               <h3 className="mt-2 text-2xl md:text-3xl font-black leading-tight">
-                dance place FELICE
+                プロダンサー
               </h3>
-              <p className="mt-1 text-[13px] font-bold opacity-70">プロダンサー 5組10名・司会進行</p>
               <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed">
-                競技会やパーティーで活躍するプロダンサーが、ダンスタイムでゲストのお相手を務めます。ゲストはグループごとに順番が回り、お一人様3回、プロと一緒に踊れます。締めくくりは、プロダンサーによるショーです。
+                競技会やパーティーで活躍するプロダンサーが、ダンスタイムでゲストのお相手を務めます。締めくくりは、プロダンサーによるショーです。
               </p>
               <p className="mt-5 text-[13px] opacity-70">出演ダンサーは決まり次第お知らせします。</p>
             </div>
@@ -462,7 +460,7 @@ export default function ValentineDance2027Page() {
             ))}
           </dl>
           <p className="mt-6 text-[12px] opacity-70">
-            運営：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）　／　ダンサー：dance place FELICE
+            運営：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）
           </p>
         </div>
       </section>
