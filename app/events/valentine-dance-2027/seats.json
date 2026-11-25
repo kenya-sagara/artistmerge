@@ -1,16 +1,5 @@
 {
   "_comment": "GitHub Actions（valentine-seats.yml）が Stripe の売れ行きから自動で書き換える。手で編集しない。",
-  "updatedAt": "2026-11-25T08:48:02.022Z",
-  "plans": {
-    "seated": {
-      "sold": 0,
-      "remaining": 20,
-      "closed": false
-    },
-    "general": {
-      "sold": 0,
-      "remaining": 40,
-      "closed": false
-    }
-  }
+  "updatedAt": null,
+  "plans": {}
 }

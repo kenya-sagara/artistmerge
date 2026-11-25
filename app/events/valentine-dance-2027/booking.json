@@ -3,7 +3,7 @@
   "maxPerOrder": 6,
   "holdBack": 0,
   "plans": [
-    { "key": "seated", "name": "着席確約プラン", "price": 20000, "seats": 20, "paymentUrl": "" },
-    { "key": "general", "name": "一般席プラン", "price": 15000, "seats": 40, "paymentUrl": "" }
+    { "key": "seated", "name": "着席確約プラン", "price": 20000, "seats": 24, "paymentUrl": "" },
+    { "key": "general", "name": "一般席プラン", "price": 15000, "seats": 36, "paymentUrl": "" }
   ]
 }
