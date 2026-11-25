@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 // 2027/2/14 社交ダンスイベントの予約・決済ページ。
 // 決済は Stripe の決済リンク（ダッシュボードで発行、人数は決済画面で選ぶ。上限は booking.json の maxPerOrder）に飛ばす。
-// プラン・定員・リンクは booking.json に持つ。リンクを貼るまでボタンは「受付開始前」になる。
+// プラン・定員・リンクは booking.json に持つ。リンクを貼るまでボタンは受付開始日の表示になる。
 // サイトは静的書き出しなので、売れた人数の集計と定員での締め切りは GitHub Actions
 // （.github/workflows/valentine-seats.yml）が行い、結果を seats.json に書く。
 
@@ -194,7 +194,9 @@ export default function ValentineDance2027Page() {
             >
               プランを選んで予約する ↓
             </a>
-            <p className="mt-4 text-[13px] opacity-90">定員60名・先着順</p>
+            <p className="mt-4 text-[13px] opacity-90">
+              {PLANS.some((p) => p.paymentUrl) ? "定員60名・先着順" : "12月1日（火）予約受付開始・定員60名・先着順"}
+            </p>
           </div>
         </div>
       </section>
@@ -348,7 +350,7 @@ export default function ValentineDance2027Page() {
                       className="inline-flex h-14 w-full items-center justify-center rounded-full border-2 border-dashed text-[14px] font-bold opacity-60"
                       style={{ borderColor: C.ink }}
                     >
-                      受付開始前です（12月中旬開始予定）
+                      12月1日（火）受付開始
                     </span>
                   )}
                   <p className="mt-3 text-center text-[12px] opacity-70">1回で{booking.maxPerOrder}名様までお申し込みいただけます</p>
