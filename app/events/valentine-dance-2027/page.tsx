@@ -195,7 +195,7 @@ export default function ValentineDance2027Page() {
               プランを選んで予約する ↓
             </a>
             <p className="mt-4 text-[13px] opacity-90">
-              {PLANS.some((p) => p.paymentUrl) ? "定員60名・先着順" : "12月1日（火）予約受付開始・定員60名・先着順"}
+              {PLANS.some((p) => p.paymentUrl) ? "定員60名・先着順" : "11月28日（土）15:00 予約受付開始・定員60名・先着順"}
             </p>
           </div>
         </div>
@@ -350,7 +350,7 @@ export default function ValentineDance2027Page() {
                       className="inline-flex h-14 w-full items-center justify-center rounded-full border-2 border-dashed text-[14px] font-bold opacity-60"
                       style={{ borderColor: C.ink }}
                     >
-                      12月1日（火）受付開始
+                      11月28日（土）15:00 受付開始
                     </span>
                   )}
                   <p className="mt-3 text-center text-[12px] opacity-70">1回で{booking.maxPerOrder}名様までお申し込みいただけます</p>
