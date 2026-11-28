@@ -81,7 +81,7 @@ const NOTES = [
   `1回のお申し込みで${booking.maxPerOrder}名様までご予約いただけます（人数は決済画面で選べます）。${booking.maxPerOrder + 1}名様以上でご参加の場合は、複数回に分けてお申し込みください。`,
   "お支払いは Stripe の決済ページで行います。決済が完了した時点で予約確定となり、確認メールが届きます。",
   "各プランとも、定員に達した時点で受付を終了します。",
-  "キャンセル・返金の条件は、ページ下部の「特定商取引法に基づく表記」をご覧ください。",
+  "キャンセル・返金の条件は、ページ下部のリンク「特定商取引法に基づく表記」をご覧ください。",
   "お席の指定はできません（着席確約プランは確約エリア内のいずれかのお席です）。",
   "会場に更衣室はありません。ダンスシューズ等は各自でご用意ください。",
 ];
@@ -464,35 +464,19 @@ export default function ValentineDance2027Page() {
         </div>
       </section>
 
-      {/* Legal */}
+      {/* Legal: 特商法表記は別ページ */}
       <section style={{ backgroundColor: C.cream, color: C.ink }}>
-        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-14 md:py-20">
-          <h2 className="text-xl md:text-2xl font-black">特定商取引法に基づく表記</h2>
-          <dl className="mt-6 text-[13px] md:text-[14px]" style={{ borderTop: "1px solid rgba(43,23,20,0.15)" }}>
-            {[
-              ["販売事業者", "株式会社アーティストマージ"],
-              ["運営責任者", "相楽 賢哉"],
-              ["所在地", "〒135-0034 東京都江東区永代2-31-15 ベルウッド永代ビル 5階"],
-              ["電話番号", "03-4563-9901"],
-              ["メールアドレス", "info@artistmerge.jp"],
-              ["販売価格", "各プランに表示（税込）"],
-              ["商品代金以外の必要料金", "なし"],
-              ["お支払い方法", "クレジットカード（Apple Pay・Google Pay を含む）。Stripe の決済ページでお支払いいただきます"],
-              ["お支払い時期", "お申し込み時"],
-              ["提供時期", "2027年2月14日（日）イベント当日"],
-              ["キャンセル・返金", "お客様のご都合によるキャンセルは、info@artistmerge.jp までご連絡ください。2月6日（土）までは全額、2月7日（日）〜11日（木・祝）は参加費の70%、2月12日（金）〜13日（土）は50%を返金します。当日および無断でのキャンセルは返金できません。主催者の都合でイベントを中止した場合は全額を返金します。"],
-            ].map(([k, v]) => (
-              <div
-                key={k}
-                className="grid gap-1 md:grid-cols-[14rem_1fr] py-3"
-                style={{ borderBottom: "1px solid rgba(43,23,20,0.15)" }}
-              >
-                <dt className="opacity-60">{k}</dt>
-                <dd>{v}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-6 text-[12px] opacity-70">
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-8 flex flex-col gap-2 md:flex-row md:items-center md:justify-between text-[13px]">
+          <Link
+            href="/events/valentine-dance-2027/legal/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold underline underline-offset-4"
+            style={{ color: C.red }}
+          >
+            特定商取引法に基づく表記 →
+          </Link>
+          <p className="text-[12px] opacity-70">
             運営：株式会社アーティストマージ　／　会場：San Antonio TEX-MEX 東京ミッドタウン日比谷（株式会社クリエイト・ダイニング）
           </p>
         </div>
