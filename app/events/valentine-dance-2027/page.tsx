@@ -209,6 +209,40 @@ export default function ValentineDance2027Page() {
         </div>
       </section>
 
+      {/* Dancer photos: 出演4組をヒーロー直下に */}
+      <section style={{ backgroundColor: C.redDeep }}>
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10 pt-16 md:pt-24">
+          <p className="text-center text-[12px] md:text-[13px] font-bold tracking-[0.2em]" style={{ color: C.yellow }}>
+            PRO DANCERS
+          </p>
+          <h2 className="mt-2 text-center text-2xl md:text-4xl font-black">出演プロダンサー</h2>
+          <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-8">
+            {DANCERS.map((d, i) => (
+              <figure key={d.src} className={i % 2 === 0 ? "-rotate-2" : "rotate-2 md:translate-y-6"}>
+                <div
+                  className="relative aspect-[2/3] overflow-hidden rounded-2xl border-4 shadow-[0_10px_0_rgba(0,0,0,0.18)]"
+                  style={{ borderColor: C.cream }}
+                >
+                  <Image
+                    src={asset(d.src)}
+                    alt={`${d.names[0]}・${d.names[1]}`}
+                    fill
+                    sizes="(min-width: 768px) 270px, 45vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-4 text-center text-[15px] md:text-[17px] font-black leading-snug">
+                  {d.names[0]}
+                  <br />
+                  <span className="text-[12px] font-bold opacity-70">＆</span> {d.names[1]}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="mt-8 md:mt-14 text-center text-[12px] opacity-75">出演者は変更になる場合があります。</p>
+        </div>
+      </section>
+
       {/* Highlights */}
       <section style={{ backgroundColor: C.redDeep }}>
         <div className="mx-auto max-w-[1200px] px-5 md:px-10 py-16 md:py-24 grid gap-5 md:grid-cols-2">
@@ -267,27 +301,6 @@ export default function ValentineDance2027Page() {
               </p>
             </div>
           </div>
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {DANCERS.map((d) => (
-              <figure key={d.src} className="rounded-3xl p-3 md:p-4" style={{ backgroundColor: C.cream, color: C.ink }}>
-                <div className="relative aspect-[2/3] overflow-hidden rounded-2xl">
-                  <Image
-                    src={asset(d.src)}
-                    alt={`${d.names[0]}・${d.names[1]}`}
-                    fill
-                    sizes="(min-width: 768px) 270px, 45vw"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="mt-3 text-center text-[15px] md:text-[16px] font-black leading-snug">
-                  {d.names[0]}
-                  <br />
-                  <span className="text-[12px] font-bold opacity-60">＆</span> {d.names[1]}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <p className="mt-5 text-center text-[12px] opacity-75">出演者は変更になる場合があります。</p>
         </div>
       </section>
 
