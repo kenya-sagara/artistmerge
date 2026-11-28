@@ -98,6 +98,14 @@ const C = {
   ink: "#2B1714",
 };
 
+// 出演ダンサー（Kenya 2026-11-28 時点の4組）
+const DANCERS = [
+  { names: ["加藤 義人", "小林 維斗"], src: "/images/dance-stage.jpg" },
+  { names: ["歩浜 敏夫", "松浦 のぞみ"], src: "/images/dance-ayumihama.jpg" },
+  { names: ["八重樫 寛由", "中村 恵理子"], src: "/images/valentine-dance-2027/dancers/yaegashi-nakamura.jpg" },
+  { names: ["加藤 裕哉", "小川 舞子"], src: "/images/valentine-dance-2027/dancers/kato-ogawa.jpg" },
+];
+
 const HIGHLIGHTS = [
   { title: "豪華生ジャズバンドの演奏で！", body: "MUSIC DAY の専属バンドから選抜した7人編成の生演奏。ライブならではのサウンドで踊れます。" },
   { title: "プロダンサーと踊れる！", body: "ダンスタイムでは、プロダンサーがゲストのお相手をします。" },
@@ -278,9 +286,29 @@ export default function ValentineDance2027Page() {
               <p className="mt-4 text-[14px] md:text-[15px] leading-relaxed">
                 競技会やパーティーで活躍するプロダンサーが、ダンスタイムでゲストのお相手を務めます。締めくくりは、プロダンサーによるショーです。
               </p>
-              <p className="mt-5 text-[13px] opacity-70">出演ダンサーは決まり次第お知らせします。</p>
             </div>
           </div>
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {DANCERS.map((d) => (
+              <figure key={d.src} className="rounded-3xl p-3 md:p-4" style={{ backgroundColor: C.cream, color: C.ink }}>
+                <div className="relative aspect-[2/3] overflow-hidden rounded-2xl">
+                  <Image
+                    src={asset(d.src)}
+                    alt={`${d.names[0]}・${d.names[1]}`}
+                    fill
+                    sizes="(min-width: 768px) 270px, 45vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-3 text-center text-[15px] md:text-[16px] font-black leading-snug">
+                  {d.names[0]}
+                  <br />
+                  <span className="text-[12px] font-bold opacity-60">＆</span> {d.names[1]}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="mt-5 text-center text-[12px] opacity-75">出演者は変更になる場合があります。</p>
         </div>
       </section>
 
